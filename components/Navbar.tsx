@@ -33,16 +33,6 @@ const NavBar = () => {
 								Skill
 							</li>
 						</Link>
-						<Link href="/">
-							<li className="ml-10 text-sm uppercase hover:scale-150 duration-100">
-								Project
-							</li>
-						</Link>
-						<Link href="/">
-							<li className="ml-10 text-sm uppercase hover:scale-150 duration-100">
-								Contact
-							</li>
-						</Link>
 					</ul>
 					<div className="md:hidden" onClick={handleNav}>
 						<AiOutlineMenu size={30} />
@@ -94,22 +84,6 @@ const NavBar = () => {
 									Skill
 								</li>
 							</Link>
-							<Link href="/">
-								<li
-									onClick={() => setNav(false)}
-									className="py-4 text-sm hover:scale-150 duration-100"
-								>
-									Project
-								</li>
-							</Link>
-							<Link href="/">
-								<li
-									onClick={() => setNav(false)}
-									className="py-4 text-sm hover:scale-150 duration-100"
-								>
-									Contact
-								</li>
-							</Link>
 						</ul>
 						<div className="pt-20">
 							<p className="uppercase tracking-widest text-[#fd4557]">
@@ -134,9 +108,6 @@ const NavBar = () => {
 										<FaGithub />
 									</div>
 								</a>
-								<div className="rounded-full  p-3 cursor-pointer hover:scale-150 ease-in duration-300">
-									<AiOutlineMail />
-								</div>
 							</div>
 						</div>
 					</div>

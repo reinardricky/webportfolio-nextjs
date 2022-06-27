@@ -30,9 +30,6 @@ const HomeScreen = () => {
 								<FaGithub size={20} />
 							</div>
 						</a>
-						<div className="bg-[#a6ebe8] rounded-full  p-4 cursor-pointer hover:scale-150 ease-in duration-300">
-							<AiOutlineMail size={20} />
-						</div>
 					</div>
 				</div>
 			</div>
