@@ -15,12 +15,7 @@ export const NavBar = () => {
 	return (
 		<div className="fixed w-full h-20 shadow-xl z-[100] bg-[#a6defd]">
 			<div className="flex justify-between items-center w-full h-full px-2 2xl:px-16">
-				<Image
-					src="/../public/assets/logo/Rr.png"
-					alt="/"
-					width="50"
-					height="50"
-				/>
+				<Image src={LogoRr} alt="/" width="50" height="50" />
 				<div>
 					<ul className="hidden md:flex">
 						<Link href="/">
