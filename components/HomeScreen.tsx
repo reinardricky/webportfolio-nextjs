@@ -1,12 +1,12 @@
 import { AiOutlineMail } from 'react-icons/ai';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
-export const HomeScreen = () => {
+const HomeScreen = () => {
 	return (
 		<div className="w-full h-screen text-center">
 			<div className="max-w-[1240px] w-full h-full mx-auto p-2 flex justify-center items-center">
 				<div>
-					<p className="uppercase text-sm tracking-widest text-gray-600">
+					<p className="uppercase text-sm tracking-widest ">
 						Welcome to my domain
 					</p>
 					<h1 className="py-2 text-[#30343f]">Hello, my name is Reinard</h1>
@@ -33,3 +33,5 @@ export const HomeScreen = () => {
 		</div>
 	);
 };
+
+export default HomeScreen;

@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import Reinard from '../public/assets/pictures/Reinard.jpg';
 
-export const About = () => {
+const About = () => {
 	return (
 		<div id="about" className="w-full md:h-screen p-2 flex items py-16 ">
 			<div className="max-w-[1240px] m-auto md:grid grid-cols-3 gap-20 p-8 ">
 				<div className="col-span-2">
-					<h2>About Me</h2>
+					<h2 className="tracking-wider">About Me</h2>
 					<p className="py-4 text-[#30343f]">
 						I am an Electrical Engineering student who enjoys programming. I
 						specialized in Frontend Enginering but can also do Fullstack
@@ -23,3 +23,5 @@ export const About = () => {
 		</div>
 	);
 };
+
+export default About;

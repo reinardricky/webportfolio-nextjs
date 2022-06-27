@@ -5,7 +5,7 @@ import { AiOutlineMail, AiOutlineMenu } from 'react-icons/ai';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 
-export const NavBar = () => {
+const NavBar = () => {
 	const [nav, setNav] = useState(false);
 
 	const handleNav = () => {
@@ -28,7 +28,7 @@ export const NavBar = () => {
 								About
 							</li>
 						</Link>
-						<Link href="/">
+						<Link href="/#skills">
 							<li className="ml-10 text-sm uppercase hover:scale-150 duration-100">
 								Skill
 							</li>
@@ -86,7 +86,7 @@ export const NavBar = () => {
 									About
 								</li>
 							</Link>
-							<Link href="/">
+							<Link href="/#skills">
 								<li
 									onClick={() => setNav(false)}
 									className="py-4 text-sm hover:scale-150 duration-100"
@@ -145,3 +145,5 @@ export const NavBar = () => {
 		</div>
 	);
 };
+
+export default NavBar;
