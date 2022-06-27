@@ -13,27 +13,33 @@ export const NavBar = () => {
 	};
 
 	return (
-		<div className="fixed w-full h-20 shadow-xl z-[100] bg-[#a6defd]">
-			<div className="flex justify-between items-center w-full h-full px-2 2xl:px-16">
+		<div className="fixed w-full h-20 shadow-md shadow-[#fd4557] z-[100] bg-[#a6defd]">
+			<div className="flex justify-between items-center w-full h-full px-6 2xl:px-16">
 				<Image src={LogoRr} alt="/" width="50" height="50" />
 				<div>
 					<ul className="hidden md:flex">
 						<Link href="/">
-							<li className="ml-10 text-sm uppercase hover:border-b">Home</li>
+							<li className="ml-10 text-sm uppercase hover:scale-150 duration-100">
+								Home
+							</li>
 						</Link>
 						<Link href="/">
-							<li className="ml-10 text-sm uppercase hover:border-b">About</li>
+							<li className="ml-10 text-sm uppercase hover:scale-150 duration-100">
+								About
+							</li>
 						</Link>
 						<Link href="/">
-							<li className="ml-10 text-sm uppercase hover:border-b">Skill</li>
+							<li className="ml-10 text-sm uppercase hover:scale-150 duration-100">
+								Skill
+							</li>
 						</Link>
 						<Link href="/">
-							<li className="ml-10 text-sm uppercase hover:border-b">
+							<li className="ml-10 text-sm uppercase hover:scale-150 duration-100">
 								Project
 							</li>
 						</Link>
 						<Link href="/">
-							<li className="ml-10 text-sm uppercase hover:border-b">
+							<li className="ml-10 text-sm uppercase hover:scale-150 duration-100">
 								Contact
 							</li>
 						</Link>
@@ -65,19 +71,29 @@ export const NavBar = () => {
 					<div className="py-4 flex flex-col text-center">
 						<ul className="uppercase">
 							<Link href="/">
-								<li className="py-4 text-sm">Home</li>
+								<li className="py-4 text-sm hover:scale-150 duration-100">
+									Home
+								</li>
 							</Link>
 							<Link href="/">
-								<li className="py-4 text-sm">About</li>
+								<li className="py-4 text-sm hover:scale-150 duration-100">
+									About
+								</li>
 							</Link>
 							<Link href="/">
-								<li className="py-4 text-sm">Skill</li>
+								<li className="py-4 text-sm hover:scale-150 duration-100">
+									Skill
+								</li>
 							</Link>
 							<Link href="/">
-								<li className="py-4 text-sm">Project</li>
+								<li className="py-4 text-sm hover:scale-150 duration-100">
+									Project
+								</li>
 							</Link>
 							<Link href="/">
-								<li className="py-4 text-sm">Contact</li>
+								<li className="py-4 text-sm hover:scale-150 duration-100">
+									Contact
+								</li>
 							</Link>
 						</ul>
 						<div className="pt-20">

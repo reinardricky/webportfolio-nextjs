@@ -4,7 +4,7 @@
 
 @layer base {
 	body {
-		@apply bg-[#a6defd] text-[#fd4557] tracking-wide font-extrabold;
+		@apply bg-[#f5f5f5] text-[#fd4557] tracking-wide font-extrabold;
 	}
 
 	h1,
