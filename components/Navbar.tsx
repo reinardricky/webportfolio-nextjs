@@ -3,7 +3,7 @@ import Link from 'next/link';
 import LogoRr from '../public/assets/logo/Rr.png';
 import { AiOutlineMail, AiOutlineMenu } from 'react-icons/ai';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const NavBar = () => {
 	const [nav, setNav] = useState(false);
@@ -23,7 +23,7 @@ export const NavBar = () => {
 								Home
 							</li>
 						</Link>
-						<Link href="/">
+						<Link href="/#about">
 							<li className="ml-10 text-sm uppercase hover:scale-150 duration-100">
 								About
 							</li>
@@ -71,27 +71,42 @@ export const NavBar = () => {
 					<div className="py-4 flex flex-col text-center">
 						<ul className="uppercase">
 							<Link href="/">
-								<li className="py-4 text-sm hover:scale-150 duration-100">
+								<li
+									onClick={() => setNav(false)}
+									className="py-4 text-sm hover:scale-150 duration-100"
+								>
 									Home
 								</li>
 							</Link>
-							<Link href="/">
-								<li className="py-4 text-sm hover:scale-150 duration-100">
+							<Link href="/#about">
+								<li
+									onClick={() => setNav(false)}
+									className="py-4 text-sm hover:scale-150 duration-100"
+								>
 									About
 								</li>
 							</Link>
 							<Link href="/">
-								<li className="py-4 text-sm hover:scale-150 duration-100">
+								<li
+									onClick={() => setNav(false)}
+									className="py-4 text-sm hover:scale-150 duration-100"
+								>
 									Skill
 								</li>
 							</Link>
 							<Link href="/">
-								<li className="py-4 text-sm hover:scale-150 duration-100">
+								<li
+									onClick={() => setNav(false)}
+									className="py-4 text-sm hover:scale-150 duration-100"
+								>
 									Project
 								</li>
 							</Link>
 							<Link href="/">
-								<li className="py-4 text-sm hover:scale-150 duration-100">
+								<li
+									onClick={() => setNav(false)}
+									className="py-4 text-sm hover:scale-150 duration-100"
+								>
 									Contact
 								</li>
 							</Link>
