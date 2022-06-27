@@ -16,7 +16,7 @@ export const About = () => {
 						my knowledge.
 					</p>
 				</div>
-				<div className="p-4 rounded-xl bg-[#a6ebe8]">
+				<div className="p-4 rounded-xl bg-[#a6ebe8] w-full h-auto m-auto shadow-md shadow-[#fd4557] flex items-center justify-center hover:scale-105 ease-in duration-300">
 					<Image src={Reinard} alt="/" className="rounded-xl " />
 				</div>
 			</div>

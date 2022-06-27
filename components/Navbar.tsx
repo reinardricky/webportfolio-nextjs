@@ -116,9 +116,15 @@ export const NavBar = () => {
 								Let's Connect
 							</p>
 							<div className="flex items-center justify-center my-4 w-full px-2 text-2xl">
-								<div className="rounded-full  p-3 cursor-pointer hover:scale-150 ease-in duration-300">
-									<FaLinkedin />
-								</div>
+								<a
+									href="https://www.linkedin.com/in/reinardricky/"
+									target="_blank"
+									rel="noreferrer"
+								>
+									<div className="rounded-full  p-3 cursor-pointer hover:scale-150 ease-in duration-300">
+										<FaLinkedin />
+									</div>
+								</a>
 								<div className="rounded-full  p-3 cursor-pointer hover:scale-150 ease-in duration-300">
 									<FaGithub />
 								</div>

@@ -12,9 +12,15 @@ export const HomeScreen = () => {
 					<h1 className="py-2 text-[#30343f]">Hello, my name is Reinard</h1>
 					<h2 className="py-2 ">I am a Software Engineer</h2>
 					<div className="flex items-center justify-around max-w-[330px] m-auto py-8">
-						<div className="bg-[#a6ebe8] rounded-full  p-4 cursor-pointer hover:scale-150 ease-in duration-300">
-							<FaLinkedin size={20} />
-						</div>
+						<a
+							href="https://www.linkedin.com/in/reinardricky/"
+							target="_blank"
+							rel="noreferrer"
+						>
+							<div className="bg-[#a6ebe8] rounded-full  p-4 cursor-pointer hover:scale-150 ease-in duration-300">
+								<FaLinkedin size={20} />
+							</div>
+						</a>
 						<div className="bg-[#a6ebe8] rounded-full  p-4 cursor-pointer hover:scale-150 ease-in duration-300">
 							<FaGithub size={20} />
 						</div>
