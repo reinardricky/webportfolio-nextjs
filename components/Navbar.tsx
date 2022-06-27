@@ -60,7 +60,7 @@ export const NavBar = () => {
 					className={
 						nav
 							? 'fixed left-0 top-0 w-[75%] sm:w-[60%] h-screen bg-[#a6defd] p-10 ease-in duration-300 '
-							: 'fixed left-[-100%] top-0 p-10 ease-in duration-500'
+							: 'fixed left-[-100%] top-0 h-screen p-10 ease-in duration-500'
 					}
 				>
 					<div>
