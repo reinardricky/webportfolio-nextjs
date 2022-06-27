@@ -43,12 +43,7 @@ export const NavBar = () => {
 				<div className="fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-screen bg-[#a6defd] p-10 ease-in duration-500 ">
 					<div>
 						<div className="flex w-full items-center justify-center">
-							<Image
-								src="/../public/assets/logo/Rr.png"
-								alt="/"
-								width="80"
-								height="80"
-							/>
+							<img src="assets/logo/Rr.png" alt="" width="80" height="80" />
 						</div>
 					</div>
 					<div className="py-4 flex flex-col text-center">
