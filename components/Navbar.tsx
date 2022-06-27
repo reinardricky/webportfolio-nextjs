@@ -125,9 +125,15 @@ const NavBar = () => {
 										<FaLinkedin />
 									</div>
 								</a>
-								<div className="rounded-full  p-3 cursor-pointer hover:scale-150 ease-in duration-300">
-									<FaGithub />
-								</div>
+								<a
+									href="https://github.com/reinardricky"
+									target="_blank"
+									rel="noreferrer"
+								>
+									<div className="rounded-full  p-3 cursor-pointer hover:scale-150 ease-in duration-300">
+										<FaGithub />
+									</div>
+								</a>
 								<div className="rounded-full  p-3 cursor-pointer hover:scale-150 ease-in duration-300">
 									<AiOutlineMail />
 								</div>
