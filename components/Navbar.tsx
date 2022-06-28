@@ -25,12 +25,12 @@ const NavBar = () => {
 						</Link>
 						<Link href="/#about">
 							<li className="ml-10 text-sm uppercase hover:scale-150 duration-100">
-								About
+								About Me
 							</li>
 						</Link>
 						<Link href="/#skills">
 							<li className="ml-10 text-sm uppercase hover:scale-150 duration-100">
-								Skill
+								Skills
 							</li>
 						</Link>
 					</ul>
@@ -73,7 +73,7 @@ const NavBar = () => {
 									onClick={() => setNav(false)}
 									className="py-4 text-sm hover:scale-150 duration-100"
 								>
-									About
+									About Me
 								</li>
 							</Link>
 							<Link href="/#skills">
@@ -81,7 +81,7 @@ const NavBar = () => {
 									onClick={() => setNav(false)}
 									className="py-4 text-sm hover:scale-150 duration-100"
 								>
-									Skill
+									Skills
 								</li>
 							</Link>
 						</ul>
