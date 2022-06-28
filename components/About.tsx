@@ -7,7 +7,7 @@ const About = () => {
 			<div className="max-w-[1240px] m-auto md:grid grid-cols-3 gap-20 p-8 ">
 				<div className="col-span-2">
 					<h2 className="tracking-wider">About Me</h2>
-					<p className="py-4 text-[#30343f]">
+					<p className="py-4 text-[#30343f] text-justify">
 						I am an Electrical Engineering student who enjoys programming. I
 						specialized in Frontend Enginering but can also do Fullstack
 						Engineering. I have experience with JavaScript, HTML, CSS, Qt
