@@ -10,7 +10,7 @@ import SkillsItem from './SkillsItem';
 
 const Skills = () => {
 	return (
-		<div id="skills" className="w-full lg:h-screen p-2">
+		<div id="skills" className="w-full h-screen p-2">
 			<div className="max-w-[1240px] mx-auto flex flex-col justify-center h-full">
 				<h2 className="tracking-wider py-4">Skills</h2>
 				<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">

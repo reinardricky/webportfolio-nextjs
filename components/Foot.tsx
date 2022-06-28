@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const Foot = () => {
 	return (
-		<footer className="p-5 ">
+		<footer>
 			<div className="w-full h-[40px] text-center text-[#30343f]">
 				<h4>©2022 Pascalis Reinard Rickyputra</h4>
 				<h4>
