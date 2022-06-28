@@ -4,4 +4,4 @@ I made this website using Next.js and Tailwind. I deployed the website using ver
 
 ## Link to Website
 
-reinardricky.com
+https://reinardricky.com/
