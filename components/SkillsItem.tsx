@@ -1,6 +1,11 @@
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
-const SkillsItem = ({ logo, name }: any) => {
+type SkillsItemType = {
+	logo: StaticImageData;
+	name: string;
+};
+
+const SkillsItem = ({ logo, name }: SkillsItemType) => {
 	return (
 		<div className="p-6 shadow-md shadow-[#fd4557] rounded-xl hover:scale-105 ease-in duration-300 bg-[#a6ebe8]">
 			<div className="grid grid-cols-2 gap-4 justify-center items-center ">

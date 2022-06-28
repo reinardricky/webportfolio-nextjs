@@ -19,10 +19,6 @@ const Home: NextPage = () => {
 					content="HTML, CSS, JavaScript, Reinardricky, reinardricky, web portfolio, Pascalis Reinard Rickyputra"
 				/>
 				<meta name="author" content="Pascalis Reinard Rickyputra" />
-				<meta
-					property="og:image"
-					content="../public/assets/logo/MetaImage.png"
-				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<HomeScreen />
