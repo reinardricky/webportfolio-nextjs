@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import About from '../components/About';
+import Foot from '../components/Foot';
 import HomeScreen from '../components/HomeScreen';
 import Skills from '../components/Skills';
 
@@ -24,6 +25,7 @@ const Home: NextPage = () => {
 			<HomeScreen />
 			<About />
 			<Skills />
+			<Foot />
 		</div>
 	);
 };

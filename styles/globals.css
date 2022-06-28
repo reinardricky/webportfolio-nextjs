@@ -30,6 +30,9 @@ html {
 	h2 {
 		@apply text-2xl sm:text-3xl md:text-5xl;
 	}
+	h4 {
+		@apply text-xs sm:text-sm md:text-base;
+	}
 
 	li {
 		@apply cursor-pointer;
