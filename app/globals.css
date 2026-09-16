@@ -1,0 +1,208 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------
+   Design tokens — Norse / Midgard
+   Cold black stone, frost-white text, one burnished gold for anything
+   that "glows", ember and blood held back for rare emphasis.
+------------------------------------------------------------------ */
+@theme {
+	--color-void: #06080b;
+	--color-abyss: #0a0e13;
+	--color-stone: #11171e;
+	--color-stone-lit: #18202a;
+	--color-edge: #1f2a35;
+	--color-edge-lit: #33424f;
+
+	--color-frost: #e6edf3;
+	--color-frost-dim: #a7b7c3;
+	--color-ash: #7d8d99;
+
+	--color-rune: #d9a441;
+	--color-rune-bright: #f2c977;
+	--color-ember: #c4632a;
+	--color-blood: #9c2f21;
+	--color-bifrost: #5fa8c7;
+
+	--font-display: var(--font-display-src), 'Trajan Pro', Georgia, serif;
+	--font-sans: var(--font-sans-src), ui-sans-serif, system-ui, sans-serif;
+	--font-mono: var(--font-mono-src), ui-monospace, 'SF Mono', monospace;
+	--font-runic: var(--font-runic-src), 'Segoe UI Historic', 'Noto Sans Runic', serif;
+
+	/* Carved display sizes — tight, heavy, letterspaced like an inscription. */
+	--text-display: clamp(2.75rem, 6.5vw, 5.75rem);
+	--text-display--line-height: 1.02;
+	--text-display--letter-spacing: 0.01em;
+
+	--text-headline: clamp(1.75rem, 4.5vw, 3.25rem);
+	--text-headline--line-height: 1.1;
+	--text-headline--letter-spacing: 0.02em;
+
+	--text-lede: clamp(1.05rem, 1.7vw, 1.3rem);
+	--text-lede--line-height: 1.65;
+
+	--ease-forge: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+		scroll-padding-top: 5.5rem;
+		-webkit-text-size-adjust: 100%;
+		color-scheme: dark;
+	}
+
+	body {
+		background-color: var(--color-void);
+		color: var(--color-frost);
+		font-family: var(--font-sans);
+		font-synthesis-weight: none;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	*,
+	::before,
+	::after {
+		border-color: var(--color-edge);
+	}
+
+	::selection {
+		background-color: var(--color-rune);
+		color: var(--color-void);
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--color-rune);
+		outline-offset: 3px;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+
+		*,
+		::before,
+		::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+		}
+	}
+}
+
+@layer components {
+	.shell {
+		width: 100%;
+		max-width: 84rem;
+		margin-inline: auto;
+		padding-inline: 1.5rem;
+	}
+
+	@media (min-width: 768px) {
+		.shell {
+			padding-inline: 3rem;
+		}
+	}
+
+	@media (min-width: 1280px) {
+		.shell {
+			padding-inline: 4rem;
+		}
+	}
+
+	/* Mono chrome: section numbers, meta rows, technical labels. */
+	.label {
+		font-family: var(--font-mono);
+		font-size: 0.6875rem;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: var(--color-ash);
+	}
+
+	/* Actual Elder Futhark, set in Noto Sans Runic. */
+	.runic {
+		font-family: var(--font-runic);
+		letter-spacing: 0.3em;
+		color: var(--color-rune);
+	}
+
+	/* A carved slab: lit top edge, shadowed base, cold stone gradient. */
+	.slab {
+		background-image: linear-gradient(
+			180deg,
+			var(--color-stone-lit) 0%,
+			var(--color-stone) 55%,
+			var(--color-abyss) 100%
+		);
+		border: 1px solid var(--color-edge);
+		box-shadow:
+			inset 0 1px 0 rgb(255 255 255 / 0.05),
+			inset 0 -1px 0 rgb(0 0 0 / 0.5),
+			0 20px 40px -24px rgb(0 0 0 / 0.9);
+	}
+
+	/* Gold hairline that fades out at both ends, like an inlay. */
+	.inlay {
+		height: 1px;
+		background-image: linear-gradient(
+			90deg,
+			transparent,
+			var(--color-rune) 18%,
+			var(--color-rune) 82%,
+			transparent
+		);
+		opacity: 0.45;
+	}
+}
+
+/* Cold stone tooth over the whole page. */
+.grain::after {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: 9999;
+	pointer-events: none;
+	opacity: 0.05;
+	mix-blend-mode: overlay;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Vignette — pulls the eye to the centre, the way the game frames a scene. */
+.grain::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: 9998;
+	pointer-events: none;
+	background: radial-gradient(
+		120% 90% at 50% 40%,
+		transparent 45%,
+		rgb(0 0 0 / 0.55) 100%
+	);
+}
+
+/* ------------------------------------------------------------------
+   Scroll reveal — see components/motion/Reveal.tsx
+------------------------------------------------------------------ */
+[data-reveal] {
+	opacity: 0;
+	transform: translateY(22px);
+	transition:
+		opacity 0.8s var(--ease-forge),
+		transform 0.8s var(--ease-forge);
+	will-change: opacity, transform;
+}
+
+[data-reveal][data-shown='true'] {
+	opacity: 1;
+	transform: none;
+	will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	[data-reveal] {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+}
