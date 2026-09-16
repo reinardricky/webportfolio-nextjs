@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Cinzel, Inter_Tight, JetBrains_Mono, Noto_Sans_Runic } from 'next/font/google';
 
-import Nav from '@/components/site/Nav';
 import { site } from '@/lib/site';
 import './globals.css';
 
@@ -46,15 +45,19 @@ export const metadata: Metadata = {
 		template: `%s — ${site.name}`,
 	},
 	description:
-		'Portfolio of Pascalis Reinard Rickyputra, a software engineer specialised in frontend engineering and comfortable across the full stack.',
+		'Portfolio of Pascalis Reinard Rickyputra — a frontend engineer in Jakarta, Indonesia, building responsive web and mobile products with React, Next.js, and React Native.',
 	keywords: [
 		'Pascalis Reinard Rickyputra',
 		'Reinardricky',
 		'software engineer',
 		'frontend engineer',
+		'frontend developer',
 		'React',
+		'React Native',
 		'Next.js',
 		'TypeScript',
+		'Jakarta',
+		'Indonesia',
 		'portfolio',
 	],
 	authors: [{ name: site.name, url: site.url }],
@@ -66,13 +69,13 @@ export const metadata: Metadata = {
 		siteName: site.name,
 		title: `${site.name} — ${site.role}`,
 		description:
-			'Software engineer specialised in frontend engineering, comfortable across the full stack.',
+			'Frontend engineer in Jakarta, building responsive web and mobile products with React, Next.js, and React Native.',
 		images: [{ url: '/assets/logo/MetaImage.png', width: 1200, height: 630, alt: site.name }],
 	},
 	twitter: {
 		card: 'summary_large_image',
 		title: `${site.name} — ${site.role}`,
-		description: 'Software engineer specialised in frontend engineering.',
+		description: 'Frontend engineer in Jakarta — React, Next.js, React Native.',
 		images: ['/assets/logo/MetaImage.png'],
 	},
 	icons: { icon: '/favicon.ico' },
@@ -89,13 +92,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			lang="en"
 			className={`${sans.variable} ${display.variable} ${mono.variable} ${runic.variable}`}
 		>
-			<body className="grain antialiased">
+			<body className="antialiased">
 				{/* Without JS the observer never runs, so unhide everything. */}
 				<noscript>
 					<style>{`[data-reveal]{opacity:1!important;transform:none!important}`}</style>
 				</noscript>
-				<Nav />
-				<main id="main">{children}</main>
+				{children}
 			</body>
 		</html>
 	);

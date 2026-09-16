@@ -12,7 +12,7 @@ export default function Skills() {
 			<div className="inlay absolute inset-x-0 top-0" aria-hidden />
 
 			<div className="shell scroll-mt-24 py-24 md:py-36">
-				<SectionHeading index="02" label="Arsenal" title="The tools I reach for first" />
+				<SectionHeading index="03" label="Arsenal" title="The tools I reach for first" />
 
 				{/* An armoury list: rune, mark, designation, use. */}
 				<ul className="mt-16 border-t border-edge">

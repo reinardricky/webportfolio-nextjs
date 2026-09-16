@@ -13,25 +13,28 @@ export default function About() {
 				<Reveal className="md:col-span-7">
 					<div className="space-y-6 text-lg leading-relaxed text-frost-dim">
 						<p>
-							I study Electrical Engineering, and somewhere along the way programming
-							stopped being a side interest and became the thing I do. Most of that
-							time goes into the frontend — interfaces, interaction, the details
-							people actually feel — though I am comfortable working through the full
-							stack when a project needs it.
+							I came to software sideways. The degree was Electrical Engineering at
+							Universitas Indonesia, finished in 2022, but by the end of it the part I
+							kept choosing was always the code. That choice has held since: frontend
+							engineering in both consulting and product teams, at Dans Multi Pro,
+							Gojek, and Samsung R&amp;D.
 						</p>
 						<p>
-							I have built with JavaScript and TypeScript, HTML and CSS, React,
-							Next.js and Node.js on the web, Flutter and Qt Creator away from it. The
-							tools change often enough that I have stopped treating any one of them
-							as the point; picking up the next one is part of the work.
+							Most of the work is React, Next.js, and React Native — responsive web
+							alongside the Android apps that ship with it. The themes that recur are
+							the unglamorous ones: components worth reusing, pages that stay quick
+							once real data arrives, and a codebase the next person can still read.
+							Flutter and the rest of the stack are there when a project asks for
+							them.
 						</p>
 					</div>
 
 					<dl className="mt-12 border-t border-edge">
 						{[
-							['Discipline', 'Electrical Engineering'],
-							['Specialism', 'Frontend engineering'],
-							['Comfortable with', 'Fullstack delivery'],
+							['Based in', 'Jakarta, Indonesia'],
+							['Currently', 'Frontend Developer, PT. Dans Multi Pro'],
+							['Specialism', 'React · Next.js · React Native'],
+							['Discipline', 'Electrical Engineering, Universitas Indonesia'],
 						].map(([term, value]) => (
 							<div
 								key={term}

@@ -5,7 +5,7 @@ import { site } from '@/lib/site';
 export default function Contact() {
 	return (
 		<section id="contact" className="shell scroll-mt-24 py-24 md:py-36">
-			<SectionHeading index="03" label="Send word" title="Have something worth building?" />
+			<SectionHeading index="04" label="Send word" title="Have something worth building?" />
 
 			<Reveal className="mt-16">
 				{site.email ? (

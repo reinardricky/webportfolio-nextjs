@@ -206,3 +206,85 @@
 		transition: none;
 	}
 }
+
+/* ==================================================================
+   DESIGN LAB — three candidate directions at /lab
+   Semantic tokens that each theme class re-points. Utilities like
+   `bg-bg` / `text-hot` therefore work identically in every theme.
+================================================================== */
+@theme {
+	--color-bg: var(--c-bg);
+	--color-surface: var(--c-surface);
+	--color-line: var(--c-line);
+	--color-line-lit: var(--c-line-lit);
+	--color-ink: var(--c-ink);
+	--color-dim: var(--c-dim);
+	--color-mute: var(--c-mute);
+	--color-hot: var(--c-hot);
+	--color-cool: var(--c-cool);
+
+	--font-hero: var(--c-display);
+}
+
+/* Defaults, so the tokens always resolve to something. */
+:root {
+	--c-bg: #06080b;
+	--c-surface: #11171e;
+	--c-line: #1f2a35;
+	--c-line-lit: #33424f;
+	--c-ink: #e6edf3;
+	--c-dim: #a7b7c3;
+	--c-mute: #7d8d99;
+	--c-hot: #d9a441;
+	--c-cool: #5fa8c7;
+	--c-display: var(--font-display-src), Georgia, serif;
+}
+
+/* ---- I. Yggdrasil — night forest, bronze tree, verdigris light ---- */
+.theme-yggdrasil {
+	--c-bg: #05090a;
+	--c-surface: #0b1113;
+	--c-line: #1b2724;
+	--c-line-lit: #2f423d;
+	--c-ink: #e8f0ea;
+	--c-dim: #a9bdb4;
+	--c-mute: #7c918a;
+	--c-hot: #c8a24a;
+	--c-cool: #57c99a;
+	--c-display: var(--font-cormorant-src), Georgia, serif;
+}
+
+/* ---- II. Muspelheim — charcoal iron, molten orange, white heat ---- */
+.theme-forge {
+	--c-bg: #0b0a09;
+	--c-surface: #16130f;
+	--c-line: #2a241d;
+	--c-line-lit: #453a2d;
+	--c-ink: #f2ece4;
+	--c-dim: #b8ac9d;
+	--c-mute: #8b7f70;
+	--c-hot: #ff6b1a;
+	--c-cool: #ffd08a;
+	--c-display: var(--font-archivo-src), 'Arial Black', sans-serif;
+}
+
+/* ---- III. Runestone — moss dark, pale limestone, red ochre ---- */
+.theme-runestone {
+	--c-bg: #101410;
+	--c-surface: #1a1f19;
+	--c-line: #2b332a;
+	--c-line-lit: #46503f;
+	--c-ink: #ece9dd;
+	--c-dim: #b3b3a0;
+	--c-mute: #86897a;
+	--c-hot: #c4543a;
+	--c-cool: #9aa87e;
+	--c-display: var(--font-spectral-src), Georgia, serif;
+}
+
+.theme-yggdrasil,
+.theme-forge,
+.theme-runestone {
+	background-color: var(--c-bg);
+	color: var(--c-ink);
+}

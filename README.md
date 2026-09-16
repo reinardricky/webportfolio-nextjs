@@ -92,6 +92,29 @@ It is built to stay cheap:
 - **Lighter on phones.** 90 embers instead of 260; device pixel ratio
   capped at 1.75.
 
+## Design lab (`/lab`)
+
+Three candidate directions live at `/lab`, each a full page on its own
+route, with a switcher pinned to the bottom so they can be compared back
+to back:
+
+| | Direction | The 3D scene |
+|---|---|---|
+| I | **Yggdrasil** | A branching world tree drawn in light, sap pulsing outward along every branch |
+| II | **Muspelheim** | A mass of iron at working heat, cracks glowing molten, sparks rising |
+| III | **Runestone** | A carved standing stone, runes cut and filled with red ochre, under raking light |
+
+They share content (`lib/site.ts`, `lib/skills.ts`) and differ in palette,
+type, layout and scene. Palettes are semantic tokens (`--c-bg`, `--c-hot`,
+…) re-pointed by a `.theme-*` class, so utilities like `bg-bg` and
+`text-hot` work identically in all three.
+
+The lab is self-contained: its extra fonts are declared in
+`app/lab/layout.tsx` so they never load on the live site, and the site's
+nav and vignette live in the `app/(site)` route group so they do not bleed
+into the candidates. Once a direction is chosen, promote it and delete
+`app/lab/` and `components/lab/`.
+
 ## Still to do
 
 - Add a **projects section** — live demos matter more to most readers than

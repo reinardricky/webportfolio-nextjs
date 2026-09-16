@@ -3,10 +3,11 @@ import { toRunic } from '@/lib/runes';
 import { site } from '@/lib/site';
 
 const meta = [
-	{ label: 'Discipline', value: 'Frontend engineering' },
-	{ label: 'Forged with', value: 'TypeScript · React · Next.js' },
-	{ label: 'Also wields', value: 'Node.js · Flutter · SQL' },
-];
+	{ label: 'Based in', value: site.location },
+	{ label: 'Forged with', value: 'React · Next.js · TypeScript' },
+	{ label: 'Also wields', value: 'React Native · Node.js · Flutter' },
+	// An empty optional field drops its column rather than showing a blank.
+].filter((row) => row.value);
 
 export default function Hero() {
 	return (
@@ -56,8 +57,8 @@ export default function Hero() {
 				<div className="inlay mt-8 max-w-md" />
 
 				<p className="mt-8 max-w-lg text-lede text-pretty text-frost-dim lg:max-w-[46%]">
-					A software engineer who builds for the web — specialised in the frontend,
-					comfortable across the whole stack.
+					A frontend engineer in Jakarta, building responsive web and mobile
+					products in React, Next.js, and React Native.
 				</p>
 
 				<div className="mt-10 flex flex-wrap items-center gap-3">
