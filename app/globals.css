@@ -1,0 +1,314 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------
+   Runestone — weathered limestone, red ochre, lichen, moss dark.
+   Ochre is the pigment rune carvers actually worked into the grooves.
+------------------------------------------------------------------ */
+@theme {
+	--color-bg: #101410;
+	--color-bg-deep: #0b0e0b;
+	--color-surface: #1a1f19;
+	--color-surface-lit: #232a21;
+	--color-line: #2b332a;
+	--color-line-lit: #46503f;
+
+	--color-ink: #ece9dd;
+	--color-dim: #b3b3a0;
+	--color-mute: #86897a;
+
+	--color-hot: #c4543a;
+	--color-hot-bright: #d9694d;
+	--color-cool: #9aa87e;
+
+	--font-display: var(--font-display-src), 'Iowan Old Style', Georgia, serif;
+	--font-sans: var(--font-sans-src), ui-sans-serif, system-ui, sans-serif;
+	--font-mono: var(--font-mono-src), ui-monospace, 'SF Mono', monospace;
+	--font-runic: var(--font-runic-src), 'Segoe UI Historic', serif;
+
+	--text-display: clamp(2.25rem, 5.5vw, 4.25rem);
+	--text-display--line-height: 1.05;
+	--text-display--letter-spacing: -0.01em;
+
+	--text-headline: clamp(1.5rem, 3.4vw, 2.6rem);
+	--text-headline--line-height: 1.2;
+
+	--ease-cut: cubic-bezier(0.2, 0.8, 0.2, 1);
+	--ease-spring: cubic-bezier(0.34, 1.36, 0.64, 1);
+
+	/* Content measure. Rules stay full-bleed; only the content is capped. */
+	--container-site: 84rem;
+
+	/* Shadows carry the moss hue of the ground, never neutral black. */
+	--shadow-plate: 0 1px 0 0 rgb(236 233 221 / 0.04) inset, 0 24px 48px -24px rgb(4 8 4 / 0.85);
+}
+
+/* One stacking scale for the whole site — no ad-hoc 9999s. */
+:root {
+	/* Fixed header height. Anchor jumps always clear it (see .band for where
+	   within a section they land). */
+	--header-h: 3.5rem;
+	/* Section top padding, and how much of it stays visible after a nav jump. */
+	--band-pt: 5rem;
+	--band-landing: 2.5rem;
+
+	--z-header: 40;
+	--z-overlay: 50;
+	--z-skip: 60;
+	--z-grain: 70;
+}
+
+@media (min-width: 768px) {
+	:root {
+		--band-pt: 7rem;
+	}
+}
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+		scroll-padding-top: var(--header-h);
+		-webkit-text-size-adjust: 100%;
+		color-scheme: dark;
+	}
+
+	body {
+		background-color: var(--color-bg);
+		color: var(--color-ink);
+		font-family: var(--font-sans);
+		font-synthesis-weight: none;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	p,
+	li,
+	dd {
+		text-wrap: pretty;
+	}
+
+	h1,
+	h2,
+	h3 {
+		text-wrap: balance;
+	}
+
+	*,
+	::before,
+	::after {
+		border-color: var(--color-line);
+	}
+
+	::selection {
+		background-color: var(--color-hot);
+		color: var(--color-ink);
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--color-hot);
+		outline-offset: 3px;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+
+		*,
+		::before,
+		::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+		}
+	}
+}
+
+@layer components {
+	/* Specimen label: the registration numbers, field terms, column heads. */
+	.label {
+		font-family: var(--font-mono);
+		font-size: 0.625rem;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: var(--color-mute);
+	}
+
+	/* The catalogue's gutter. Full-bleed rules, inset content — the
+	   gutter grows on wide screens so content never exceeds the measure. */
+	.pad {
+		--gutter: 1.5rem;
+		padding-inline: max(var(--gutter), calc((100% - var(--container-site)) / 2));
+	}
+
+	@media (min-width: 768px) {
+		.pad {
+			--gutter: 2.5rem;
+		}
+	}
+
+	/* Section rhythm: bottom runs heavier than top so bands read as settled. */
+	.band {
+		padding-top: var(--band-pt);
+		padding-bottom: 6rem;
+		/* Jumps skip most of the top padding, so the heading lands just under
+		   the bar instead of below a band of empty space. What is skipped is
+		   this section's own padding, so the previous section stays hidden. */
+		scroll-margin-top: calc(var(--band-landing) - var(--band-pt));
+	}
+
+	@media (min-width: 768px) {
+		.band {
+			padding-bottom: 8.5rem;
+		}
+	}
+
+	/* Rectangular, label-set buttons. Lift on hover, settle on press. */
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6rem;
+		border: 1px solid var(--color-line-lit);
+		/* Slightly tighter on phones so a primary + secondary pair fits one row. */
+		padding: 0.75rem 1rem;
+		color: var(--color-dim);
+		transition:
+			color 0.25s var(--ease-cut),
+			background-color 0.25s var(--ease-cut),
+			border-color 0.25s var(--ease-cut),
+			transform 0.25s var(--ease-spring);
+	}
+
+	@media (min-width: 640px) {
+		.btn {
+			padding-inline: 1.25rem;
+		}
+	}
+
+	.btn:hover {
+		border-color: var(--color-ink);
+		color: var(--color-ink);
+		transform: translateY(-1px);
+	}
+
+	.btn:active {
+		transform: translateY(1px) scale(0.985);
+		transition-duration: 0.08s;
+	}
+
+	.btn-primary {
+		border-color: var(--color-hot);
+		background-color: var(--color-hot);
+		color: var(--color-ink);
+	}
+
+	.btn-primary:hover {
+		border-color: var(--color-hot-bright);
+		background-color: var(--color-hot-bright);
+	}
+
+	.btn .arrow {
+		transition: transform 0.3s var(--ease-spring);
+	}
+
+	.btn:hover .arrow {
+		transform: translateX(3px);
+	}
+
+	/* Text links that press, for the quieter tertiary actions. */
+	.press {
+		transition:
+			color 0.25s var(--ease-cut),
+			transform 0.2s var(--ease-spring);
+	}
+
+	.press:active {
+		transform: translateY(1px);
+	}
+
+	.runic {
+		font-family: var(--font-runic);
+		letter-spacing: 0.3em;
+		color: var(--color-hot);
+	}
+
+	/* Field-notes row: term left, value right, hairline under. */
+	.record-row {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 1.5rem;
+		border-bottom: 1px solid var(--color-line);
+		padding-block: 0.7rem;
+		font-variant-numeric: tabular-nums;
+	}
+}
+
+/* Stone tooth. Subtler than paper grain — this is a dark ground. */
+.grain::after {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: var(--z-grain);
+	pointer-events: none;
+	opacity: 0.045;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ------------------------------------------------------------------
+   Load-in for the hero: a short staggered rise, set per element via --d.
+------------------------------------------------------------------ */
+@keyframes rise {
+	from {
+		opacity: 0;
+		transform: translateY(14px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+.rise {
+	animation: rise 0.9s var(--ease-cut) both;
+	animation-delay: var(--d, 0ms);
+}
+
+/* Display lines slide up out of their own mask (the parent clips). */
+@keyframes line-up {
+	from {
+		transform: translateY(108%);
+	}
+	to {
+		transform: none;
+	}
+}
+
+.line-up {
+	animation: line-up 1.15s var(--ease-cut) both;
+	animation-delay: var(--d, 0ms);
+}
+
+/* ------------------------------------------------------------------
+   Scroll reveal — see components/motion/Reveal.tsx
+------------------------------------------------------------------ */
+[data-reveal] {
+	opacity: 0;
+	transform: translateY(18px);
+	transition:
+		opacity 0.7s var(--ease-cut),
+		transform 0.7s var(--ease-cut);
+	will-change: opacity, transform;
+}
+
+[data-reveal][data-shown='true'] {
+	opacity: 1;
+	transform: none;
+	will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	[data-reveal] {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+}
