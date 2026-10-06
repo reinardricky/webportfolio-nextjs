@@ -1,7 +1,117 @@
-## Hello this is my Web Portfolio
+# reinardricky.com
 
-I made this website using Next.js and Tailwind. I deployed the website using vercel.
+Personal portfolio — Norse-themed, built with Next.js (App Router),
+Tailwind CSS and a React Three Fiber hero. Deployed on Vercel.
 
-## Link to Website
+The design reads as an archaeological record: the page is a catalogue
+entry for a carved standing stone. Moss dark ground, weathered limestone
+text, red ochre — the pigment rune carvers actually worked into the
+grooves — and lichen green. Specimen numbers, field notes, figure
+captions, and a proper catalogue table. Section labels carry their own
+Elder Futhark transliteration.
 
-reinardricky.com
+**Live:** https://reinardricky.com
+
+## Stack
+
+| | |
+|---|---|
+| Framework | Next.js 16 (App Router, React 19) |
+| Styling | Tailwind CSS 4 (CSS-first config, no `tailwind.config.js`) |
+| Type | Spectral (display) · Inter Tight (UI) · JetBrains Mono (chrome) · Noto Sans Runic |
+| 3D | three.js + React Three Fiber 9 + drei |
+| Language | TypeScript |
+
+## Running it
+
+```bash
+npm install
+npm run dev        # http://localhost:3000
+```
+
+```bash
+npm run build      # production build
+npm run lint       # eslint
+npm run typecheck  # tsc --noEmit
+```
+
+## Where things live
+
+```
+app/
+  layout.tsx        fonts, metadata, <Nav>
+  page.tsx          section order + JSON-LD
+  globals.css       design tokens (@theme) and base styles
+components/
+  site/             Nav, Hero, About, Skills, Contact, Footer
+  three/            the hero scene
+  motion/Reveal     scroll-reveal wrapper (CSS + IntersectionObserver)
+lib/
+  site.ts           name, email, socials, nav — edit this first
+  skills.ts         the skills list
+  runes.ts          Elder Futhark stroke data + transliteration
+```
+
+## Editing content
+
+Almost everything personal lives in [`lib/site.ts`](lib/site.ts). The
+optional fields (`location`, `availability`, `resumeUrl`) render only when
+filled in, so leaving one empty removes it from the page rather than
+showing a placeholder.
+
+Prose lives in the components themselves: `components/site/About.tsx`
+holds the bio, `lib/skills.ts` the skill list and one-line notes.
+
+## The hero scene
+
+A Bifröst rune gate: three concentric rings inscribed with real Elder
+Futhark, counter-rotating at different speeds over a breathing core, with
+embers drifting up past it. The gate leans toward the cursor and opens as
+you scroll.
+
+Everything glowing uses `THREE.AdditiveBlending`, which is what makes
+light read as light on a dark ground. The glow itself is baked into the
+rune texture with canvas `shadowBlur` rather than a post-processing bloom
+pass — one texture upload instead of an extra full-screen render target
+every frame.
+
+The runes are not a font. `lib/runes.ts` defines all 24 Elder Futhark
+glyphs as stroke coordinates, which `runeTexture.ts` draws into a strip
+that wraps around each ring. Same data drives the SVG fallback.
+
+It is built to stay cheap:
+
+- **Lazy-loaded.** three.js is a dynamic import, kept out of the first
+  payload entirely.
+- **Never renders when unseen.** An IntersectionObserver switches the
+  frameloop off once the hero scrolls away.
+- **Honours `prefers-reduced-motion`.** Renders one posed frame, then the
+  GPU goes idle.
+- **Degrades three ways.** No WebGL, a shader that will not link, or a lost
+  context all fall back to `StaticShell` — the same gate, drawn once as
+  plain SVG. That SVG is also what the server renders, so the hero is
+  never empty.
+- **Lighter on phones.** 90 embers instead of 260; device pixel ratio
+  capped at 1.75.
+
+## Hero scene options (`/lab`)
+
+The layout is settled; the 3D in the hero plate is not. Four candidates
+are switchable at `/lab`, each shown in the real plate at the real size:
+
+| | Option | What it is |
+|---|---|---|
+| 1 | **Artifact scan** | The stone as a point cloud, a scan plane sweeping up it, the inscription resolving as it passes |
+| 2 | **Star chart** | A celestial sphere with figures drawn over it in ochre rule lines |
+| 3 | **Contour survey** | Terrain read as contour lines, every fourth drawn heavier as an index contour |
+| 4 | **Bind-rune** | Seven runes sharing one stave, cut as real bars and lit from a low angle |
+
+Set the winner in `lib/site.ts` (`heroScene`), then delete `app/lab/` and
+the unused folders under `components/three/scenes/`. Each scene is its own
+lazy chunk, so only the chosen one is ever fetched.
+
+## Still to do
+
+- Add a **projects section** — live demos matter more to most readers than
+  anything else on the page.
+- Pick a hero scene at `/lab` and set it in `lib/site.ts`.
