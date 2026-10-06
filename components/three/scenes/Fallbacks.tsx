@@ -1,5 +1,6 @@
 import { makeRandom } from '@/lib/prng';
-import { RUNES } from '@/lib/runes';
+import { RUNES, toRunic } from '@/lib/runes';
+import { site } from '@/lib/site';
 
 /*
  * Static stand-ins, server-rendered and shown when WebGL is unavailable.
@@ -137,6 +138,53 @@ export function SigilFallback() {
 						y2={230 - y2 * 200}
 					/>
 				))}
+			</g>
+		</svg>
+	);
+}
+
+const MONOLITH_GLYPHS = [...toRunic(site.firstName)]
+	.map((char) => RUNES.find((r) => r.char === char)?.strokes ?? [])
+	.filter((s) => s.length > 0);
+
+/** The standing stone in flat silhouette, with the inscription in ochre. */
+export function MonolithFallback() {
+	const cell = 172 / MONOLITH_GLYPHS.length;
+
+	return (
+		<svg viewBox="0 0 200 300" className="h-full w-full" aria-hidden focusable="false">
+			{/* Uneven raised stone: slanted head peaking right, flared foot. */}
+			<path
+				d="M44 270 Q50 236 56 196 L64 110 Q70 72 92 50 L104 40 Q118 30 130 34 Q146 40 150 70 L154 150 Q156 214 160 248 Q164 262 158 270 Z"
+				fill="#3b3f37"
+				stroke="#c4543a"
+				strokeOpacity="0.35"
+				strokeWidth="0.8"
+			/>
+			<g stroke="#d9694d" strokeWidth="2.2" strokeLinecap="round" fill="none">
+				{/* Serpent band hugging the outline: drawn wide, then cut through the middle. */}
+				<path
+					d="M66 246 L74 118 Q80 84 98 64 L108 56 Q120 48 130 52 Q140 58 142 82 L146 152 Q148 210 150 246"
+					strokeOpacity="0.55"
+					strokeWidth="11"
+				/>
+				<path
+					d="M66 246 L74 118 Q80 84 98 64 L108 56 Q120 48 130 52 Q140 58 142 82 L146 152 Q148 210 150 246"
+					stroke="#3b3f37"
+					strokeWidth="8"
+				/>
+				<path d="M61 246 Q60 262 66 266 Q72 262 71 246" strokeOpacity="0.55" strokeWidth="1.2" />
+				{MONOLITH_GLYPHS.map((strokes, i) =>
+					strokes.map(([x1, y1, x2, y2], j) => (
+						<line
+							key={`${i}-${j}`}
+							x1={100 + (x1 - 0.5) * 14}
+							y1={74 + cell * i + (1 - y1) * 18}
+							x2={100 + (x2 - 0.5) * 14}
+							y2={74 + cell * i + (1 - y2) * 18}
+						/>
+					)),
+				)}
 			</g>
 		</svg>
 	);

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter_Tight, JetBrains_Mono, Noto_Sans_Runic, Spectral } from 'next/font/google';
+import { Geist, JetBrains_Mono, Noto_Sans_Runic, Spectral } from 'next/font/google';
 
 import { site } from '@/lib/site';
 import './globals.css';
@@ -16,10 +16,11 @@ const display = Spectral({
 	display: 'swap',
 });
 
-/* The functional UI stays a clean, highly legible sans. */
-const sans = Inter_Tight({
+/* The functional UI: a grotesque with more character than Inter, and a
+   500/600 pair for hierarchy below the display serif. */
+const sans = Geist({
 	subsets: ['latin'],
-	weight: ['400', '500'],
+	weight: ['400', '500', '600'],
 	variable: '--font-sans-src',
 	display: 'swap',
 });

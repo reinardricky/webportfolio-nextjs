@@ -1,7 +1,12 @@
-export const SCENE_IDS = ['scan', 'constellation', 'survey', 'sigil'] as const;
+export const SCENE_IDS = ['monolith', 'scan', 'constellation', 'survey', 'sigil'] as const;
 export type SceneId = (typeof SCENE_IDS)[number];
 
 export const SCENE_META: Record<SceneId, { name: string; blurb: string }> = {
+	monolith: {
+		name: 'Runestone',
+		blurb:
+			'One standing stone with an arched head, weathered and lit from a low angle. Your name runs down the face in Elder Futhark, the grooves glowing ochre, while the stone sways slowly toward the cursor.',
+	},
 	scan: {
 		name: 'Artifact scan',
 		blurb:

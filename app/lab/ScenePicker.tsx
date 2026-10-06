@@ -23,7 +23,7 @@ export default function ScenePicker() {
 							type="button"
 							onClick={() => setScene(id)}
 							aria-pressed={active}
-							className={`label border px-4 py-2.5 transition-colors ${
+							className={`label press border px-4 py-2.5 transition-colors ${
 								active
 									? 'border-hot bg-hot text-ink'
 									: 'border-line-lit text-dim hover:border-ink hover:text-ink'

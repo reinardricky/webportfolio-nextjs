@@ -5,11 +5,11 @@ import SectionHeading from '@/components/site/SectionHeading';
 import { toRunic } from '@/lib/runes';
 import { skills } from '@/lib/skills';
 
-const HEADS = ['№', '', 'Designation', 'Class', 'Recorded use', 'Futhark'];
+const HEADS = ['№', '', 'Skill', 'Type', 'How I use it', 'In runes'];
 
 export default function Skills() {
 	return (
-		<section id="skills" className="pad scroll-mt-20 border-b border-line py-20 md:py-28">
+		<section id="skills" className="pad band border-b border-line">
 			<SectionHeading index="03" label="Skills" title="What I build with." />
 
 			<Reveal className="mt-10 overflow-x-auto">
@@ -70,7 +70,7 @@ export default function Skills() {
 			</Reveal>
 
 			<p className="label mt-5">
-				{skills.length} entries — transliteration is Elder Futhark, spelling the Latin
+				{skills.length} skills. The runes spell each name in the Elder Futhark alphabet.
 			</p>
 		</section>
 	);

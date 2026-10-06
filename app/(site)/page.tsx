@@ -26,7 +26,6 @@ const personJsonLd = {
 			  },
 		  }
 		: {}),
-	worksFor: { '@type': 'Organization', name: site.employer },
 	alumniOf: education.map((study) => ({
 		'@type': 'CollegeOrUniversity',
 		name: study.school,
@@ -48,8 +47,12 @@ export default function Home() {
 			<About />
 			<Experience />
 			<Skills />
-			<Contact />
-			<Footer />
+			{/* The last section plus footer fill at least one screen, so the
+			    Contact link can scroll it flush under the header like the rest. */}
+			<div className="flex min-h-[calc(100svh-var(--header-h))] flex-col">
+				<Contact />
+				<Footer />
+			</div>
 		</>
 	);
 }

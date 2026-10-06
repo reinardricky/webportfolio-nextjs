@@ -5,9 +5,16 @@
  */
 import type { SceneId } from '@/components/three/scenes/registry';
 
+/** What fills the right side of the hero. Compare both at /lab. */
+export type HeroVariant = 'portrait' | 'runestone';
+
 export const site = {
-	/** The hero's 3D scene. Compare the options at /lab. */
-	heroScene: 'scan' as SceneId,
+	hero: 'runestone' as HeroVariant,
+	/** The 3D scene used when `hero` is 'runestone'. */
+	heroScene: 'monolith' as SceneId,
+
+	/** Catalogue number shown in the chrome — header, hero and footer. */
+	specimen: 'RR-2026-001',
 
 	name: 'Pascalis Reinard Rickyputra',
 	firstName: 'Reinard',
@@ -21,9 +28,6 @@ export const site = {
 	location: 'Jakarta, Indonesia',
 	availability: '',
 	resumeUrl: '',
-
-	/** Reads as "<role> at <employer>" wherever both are shown together. */
-	employer: 'PT. Dans Multi Pro',
 
 	socials: [
 		{ label: 'GitHub', href: 'https://github.com/reinardricky', handle: '@reinardricky' },

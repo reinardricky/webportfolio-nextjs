@@ -20,15 +20,15 @@ export type Skill = {
 };
 
 export const skills: Skill[] = [
-	{ name: 'TypeScript', logo: Typescript, note: 'Typed end to end', group: 'Language' },
-	{ name: 'JavaScript', logo: JavaScript, note: 'Where it started', group: 'Language' },
-	{ name: 'React', logo: ReactLogo, note: 'Reusable component systems', group: 'Framework' },
-	{ name: 'Next.js', logo: NextJs, note: 'App Router, SSR', group: 'Framework' },
-	{ name: 'React Native', logo: ReactLogo, note: 'Android, shared with web', group: 'Framework' },
-	{ name: 'Flutter', logo: Flutter, note: 'Cross-platform mobile', group: 'Framework' },
+	{ name: 'TypeScript', logo: Typescript, note: 'Type-safe code across projects', group: 'Language' },
+	{ name: 'JavaScript', logo: JavaScript, note: 'Where I started', group: 'Language' },
+	{ name: 'React', logo: ReactLogo, note: 'Reusable components', group: 'Framework' },
+	{ name: 'Next.js', logo: NextJs, note: 'App Router and server rendering', group: 'Framework' },
+	{ name: 'React Native', logo: ReactLogo, note: 'Android apps alongside the web', group: 'Framework' },
+	{ name: 'Flutter', logo: Flutter, note: 'Cross-platform mobile apps', group: 'Framework' },
 	{ name: 'Node.js', logo: Node, note: 'APIs and services', group: 'Platform' },
 	{ name: 'HTML', logo: HTML, note: 'Semantic, accessible markup', group: 'Language' },
-	{ name: 'CSS', logo: CSS, note: 'Responsive layout', group: 'Styling' },
-	{ name: 'Tailwind', logo: Tailwind, note: 'Design systems', group: 'Styling' },
-	{ name: 'Git', logo: Git, note: 'Branching, review', group: 'Tooling' },
+	{ name: 'CSS', logo: CSS, note: 'Responsive layouts', group: 'Styling' },
+	{ name: 'Tailwind', logo: Tailwind, note: 'Consistent styling', group: 'Styling' },
+	{ name: 'Git', logo: Git, note: 'Branching and code review', group: 'Tooling' },
 ];

@@ -4,8 +4,8 @@ import { credentials, education, roles } from '@/lib/experience';
 
 export default function Experience() {
 	return (
-		<section id="experience" className="pad scroll-mt-20 border-b border-line py-20 md:py-28">
-			<SectionHeading index="02" label="Experience" title="Where the work has been done." />
+		<section id="experience" className="pad band border-b border-line">
+			<SectionHeading index="02" label="Experience" title="Where I have worked." />
 
 			{/* The record itself — newest first, each role a carved band. */}
 			<ol className="mt-10 border-t border-line">
@@ -20,7 +20,7 @@ export default function Experience() {
 								/>
 
 								<div className="md:col-span-4">
-									<p className="label flex items-center gap-2.5 text-hot">
+									<p className="label flex items-center gap-2.5 text-hot tabular-nums">
 										{role.current ? (
 											<span
 												className="inline-block size-1.5 bg-hot"
@@ -38,12 +38,12 @@ export default function Experience() {
 								</div>
 
 								<div className="md:col-span-8">
-									<h3 className="font-display text-xl font-normal text-ink md:text-2xl">
+									<h3 className="font-display text-xl font-normal tracking-tight text-ink md:text-[1.75rem] md:leading-tight">
 										{role.title}
 									</h3>
-									<p className="mt-1.5 text-base text-hot">{role.company}</p>
+									<p className="mt-2 text-base font-medium text-hot">{role.company}</p>
 
-									<ul className="mt-5 space-y-2.5">
+									<ul className="mt-5 max-w-[68ch] space-y-2.5">
 										{role.points.map((point) => (
 											<li
 												key={point}
@@ -66,7 +66,7 @@ export default function Experience() {
 
 			{/* Schooling and the small facts, kept to a single closing band. */}
 			<Reveal className="mt-16">
-				<h3 className="label text-hot">Schooling</h3>
+				<h3 className="label text-hot">Education</h3>
 
 				<dl className="mt-6 border-t border-line">
 					{education.map((study) => (
@@ -75,7 +75,7 @@ export default function Experience() {
 								<dt className="font-display text-lg font-normal text-ink">
 									{study.school}
 								</dt>
-								<dd className="label text-hot">{study.period}</dd>
+								<dd className="label text-hot tabular-nums">{study.period}</dd>
 							</div>
 							<dd className="mt-2 text-sm text-dim">{study.qualification}</dd>
 							{study.detail ? (

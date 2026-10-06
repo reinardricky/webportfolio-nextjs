@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import SceneHost from '@/components/three/SceneHost';
 import {
 	ConstellationFallback,
+	MonolithFallback,
 	ScanFallback,
 	SigilFallback,
 	SurveyFallback,
@@ -17,6 +18,10 @@ import { site } from '@/lib/site';
  * three.js stays out of the first load entirely.
  */
 const LAZY = {
+	monolith: dynamic(() => import('@/components/three/scenes/monolith/Scene'), {
+		ssr: false,
+		loading: () => <MonolithFallback />,
+	}),
 	scan: dynamic(() => import('@/components/three/scenes/scan/Scene'), {
 		ssr: false,
 		loading: () => <ScanFallback />,
@@ -36,6 +41,7 @@ const LAZY = {
 } as const;
 
 const FALLBACKS = {
+	monolith: <MonolithFallback />,
 	scan: <ScanFallback />,
 	constellation: <ConstellationFallback />,
 	survey: <SurveyFallback />,

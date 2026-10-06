@@ -9,21 +9,21 @@ const builtWith = [
 
 export default function Footer() {
 	return (
-		<footer className="pad py-8">
+		<footer className="pad pt-8 pb-10">
 			<div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 				<p className="label">
-					© {new Date().getFullYear()} {site.name} — RR-2026-001
+					© {new Date().getFullYear()} {site.name} — {site.specimen}
 				</p>
 
 				<p className="label flex flex-wrap items-center gap-x-2 gap-y-1">
-					<span>Recorded with</span>
+					<span>Built with</span>
 					{builtWith.map((tool, i) => (
 						<span key={tool.href}>
 							<a
 								href={tool.href}
 								target="_blank"
 								rel="noreferrer"
-								className="text-dim transition-colors hover:text-hot"
+								className="press text-dim hover:text-hot"
 							>
 								{tool.label}
 							</a>
@@ -32,8 +32,8 @@ export default function Footer() {
 					))}
 				</p>
 
-				<a href="#top" className="label text-dim transition-colors hover:text-hot">
-					Return to head ↑
+				<a href="#top" className="label press text-dim hover:text-hot">
+					Back to top ↑
 				</a>
 			</div>
 		</footer>

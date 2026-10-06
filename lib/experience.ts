@@ -25,9 +25,9 @@ export const roles: Role[] = [
 		location: 'Jakarta · Hybrid',
 		current: true,
 		points: [
-			'Building web and mobile projects for Telkom in React.js and React Native.',
-			'Developing and maintaining responsive web applications alongside their Android counterparts.',
-			'Sharpening the experience through efficient state management, reusable components, and performance work.',
+			'Building web and mobile projects for Telkom using React.js and React Native.',
+			'Developing and maintaining responsive web applications and their Android versions.',
+			'Improving the user experience with efficient state management, reusable components, and better performance.',
 		],
 	},
 	{
@@ -36,7 +36,7 @@ export const roles: Role[] = [
 		kind: 'Full-time',
 		period: 'May 2024 — Aug 2024',
 		location: 'Jakarta · Hybrid',
-		points: ['Built features for the CMS behind Samsung VXT.'],
+		points: ['Built features for the content management system (CMS) behind Samsung VXT.'],
 	},
 	{
 		title: 'Software Engineer — GoPlay',
@@ -45,8 +45,8 @@ export const roles: Role[] = [
 		period: 'Aug 2022 — May 2024',
 		location: 'Jakarta · Hybrid',
 		points: [
-			'Part of the GoPlay Web team, migrating and maintaining the platform and shipping new features.',
-			'Built the internal CMS site and the company portfolio site.',
+			'Worked in the GoPlay Web team, where I helped migrate and maintain the platform and shipped new features.',
+			'Built the internal CMS and the company portfolio website.',
 		],
 	},
 	{
@@ -56,8 +56,8 @@ export const roles: Role[] = [
 		period: 'May 2022 — Aug 2022',
 		location: 'Jakarta · Hybrid',
 		points: [
-			'Built and maintained TypeMaster, a game running inside the GoPlay web app.',
-			'Helped migrate the GoPlay web front end from Vue.js to Next.js.',
+			'Built and maintained TypeMaster, a game inside the GoPlay web app.',
+			'Helped migrate the GoPlay website from Vue.js to Next.js.',
 		],
 	},
 	{
@@ -66,9 +66,9 @@ export const roles: Role[] = [
 		kind: 'Apprenticeship',
 		period: 'Feb 2022 — Aug 2022',
 		points: [
-			'Independent study through HTML & CSS, JavaScript, Git, and React.js.',
-			'Classes on React.js alongside soft skills, career readiness, and English.',
-			'Shipped a Spotify playlist web app in React.js as the final project.',
+			'Studied HTML, CSS, JavaScript, Git, and React.js independently.',
+			'Attended classes on React.js, as well as soft skills, career preparation, and English.',
+			'Built a Spotify playlist web app with React.js as my final project.',
 		],
 	},
 	{
@@ -78,7 +78,7 @@ export const roles: Role[] = [
 		period: 'Nov 2021 — Feb 2022',
 		location: 'Jakarta',
 		points: [
-			'Built a Flutter mobile app for employee attendance and biodata.',
+			'Built a Flutter mobile app for employee attendance and personal data.',
 		],
 	},
 ];
@@ -96,7 +96,7 @@ export const education: Study[] = [
 		qualification: "Bachelor's degree, Electrical and Electronics Engineering",
 		period: '2018 — 2022',
 		detail:
-			'Graduated 3.76 / 4.00. Thesis: an Android SoC viewer for a battery management system over Bluetooth Low Energy.',
+			'GPA 3.76 / 4.00. My thesis was an Android app that shows the state of charge (SoC) of a battery management system over Bluetooth Low Energy.',
 	},
 ];
 
