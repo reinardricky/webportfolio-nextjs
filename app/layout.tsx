@@ -1,16 +1,17 @@
 import type { Metadata, Viewport } from 'next';
-import { Cinzel, Inter_Tight, JetBrains_Mono, Noto_Sans_Runic } from 'next/font/google';
+import { Inter_Tight, JetBrains_Mono, Noto_Sans_Runic, Spectral } from 'next/font/google';
 
 import { site } from '@/lib/site';
 import './globals.css';
 
 // Self-hosted by next/font: no render-blocking request, no layout shift.
 
-/* Carved Roman capitals — the closest widely available face to the
-   chiselled inscription style the game's title treatment uses. */
-const display = Cinzel({
+/* A working serif — this is a catalogue, not a monument. Light weights
+   keep the display type scholarly rather than shouted. */
+const display = Spectral({
 	subsets: ['latin'],
-	weight: ['400', '600', '700'],
+	weight: ['300', '400', '600'],
+	style: ['normal', 'italic'],
 	variable: '--font-display-src',
 	display: 'swap',
 });
@@ -82,7 +83,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-	themeColor: '#06080b',
+	themeColor: '#101410',
 	colorScheme: 'dark',
 };
 

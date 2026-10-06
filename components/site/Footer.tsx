@@ -9,31 +9,31 @@ const builtWith = [
 
 export default function Footer() {
 	return (
-		<footer className="border-t border-edge bg-abyss">
-			<div className="shell flex flex-col gap-6 py-10 sm:flex-row sm:items-center sm:justify-between">
+		<footer className="pad py-8">
+			<div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 				<p className="label">
-					© {new Date().getFullYear()} {site.name}
+					© {new Date().getFullYear()} {site.name} — RR-2026-001
 				</p>
 
 				<p className="label flex flex-wrap items-center gap-x-2 gap-y-1">
-					<span>Forged with</span>
+					<span>Recorded with</span>
 					{builtWith.map((tool, i) => (
 						<span key={tool.href}>
 							<a
 								href={tool.href}
 								target="_blank"
 								rel="noreferrer"
-								className="text-frost-dim transition-colors hover:text-rune"
+								className="text-dim transition-colors hover:text-hot"
 							>
 								{tool.label}
 							</a>
-							{i < builtWith.length - 1 ? <span className="ml-2 text-edge-lit">·</span> : null}
+							{i < builtWith.length - 1 ? <span className="ml-2 text-line-lit">·</span> : null}
 						</span>
 					))}
 				</p>
 
-				<a href="#top" className="label text-frost-dim transition-colors hover:text-rune">
-					Back to top ↑
+				<a href="#top" className="label text-dim transition-colors hover:text-hot">
+					Return to head ↑
 				</a>
 			</div>
 		</footer>

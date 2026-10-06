@@ -6,12 +6,12 @@ import Portrait from '@/public/assets/pictures/Reinard.jpg';
 
 export default function About() {
 	return (
-		<section id="about" className="shell scroll-mt-24 py-24 md:py-36">
-			<SectionHeading index="01" label="About" title="The one who kept choosing software" />
+		<section id="about" className="pad scroll-mt-20 border-b border-line py-20 md:py-28">
+			<SectionHeading index="01" label="About" title="I came to software sideways." />
 
-			<div className="mt-16 grid gap-14 md:grid-cols-12 md:gap-10">
+			<div className="mt-12 grid gap-12 md:grid-cols-12 md:gap-10">
 				<Reveal className="md:col-span-7">
-					<div className="space-y-6 text-lg leading-relaxed text-frost-dim">
+					<div className="space-y-5 leading-relaxed text-dim">
 						<p>
 							I came to software sideways. The degree was Electrical Engineering at
 							Universitas Indonesia, finished in 2022, but by the end of it the part I
@@ -24,48 +24,26 @@ export default function About() {
 							alongside the Android apps that ship with it. The themes that recur are
 							the unglamorous ones: components worth reusing, pages that stay quick
 							once real data arrives, and a codebase the next person can still read.
-							Flutter and the rest of the stack are there when a project asks for
-							them.
+							Flutter and the rest of the stack are there when a project asks for them.
 						</p>
 					</div>
-
-					<dl className="mt-12 border-t border-edge">
-						{[
-							['Based in', 'Jakarta, Indonesia'],
-							['Currently', 'Frontend Developer, PT. Dans Multi Pro'],
-							['Specialism', 'React · Next.js · React Native'],
-							['Discipline', 'Electrical Engineering, Universitas Indonesia'],
-						].map(([term, value]) => (
-							<div
-								key={term}
-								className="flex items-baseline justify-between gap-6 border-b border-edge py-4"
-							>
-								<dt className="label">{term}</dt>
-								<dd className="text-right text-sm text-frost">{value}</dd>
-							</div>
-						))}
-					</dl>
 				</Reveal>
 
-				<Reveal className="md:col-span-5" delay={0.1}>
-					<figure className="group">
-						<div className="slab relative overflow-hidden p-2">
+				<Reveal className="md:col-span-4 md:col-start-9" delay={0.08}>
+					<figure>
+						<div className="border border-line bg-surface p-1.5">
 							<Image
 								src={Portrait}
 								alt="Portrait of Pascalis Reinard Rickyputra"
 								placeholder="blur"
-								sizes="(min-width: 768px) 40vw, 100vw"
-								className="h-auto w-full contrast-[1.08] saturate-[0.72] transition-all duration-700 ease-forge group-hover:saturate-100"
-							/>
-							{/* Cold cast over the portrait, lifted on hover. */}
-							<div
-								className="pointer-events-none absolute inset-2 bg-gradient-to-t from-void/70 via-transparent to-transparent transition-opacity duration-700 group-hover:opacity-40"
-								aria-hidden
+								sizes="(min-width: 768px) 32vw, 100vw"
+								className="h-auto w-full saturate-[0.75] contrast-[1.05]"
 							/>
 						</div>
-						<figcaption className="label mt-4 flex items-center gap-3">
-							<span className="h-px w-8 bg-rune/60" aria-hidden />
-							Pascalis Reinard Rickyputra
+						<figcaption className="label mt-3 leading-relaxed">
+							Fig. 2 — subject
+							<br />
+							<span className="text-hot">Pascalis Reinard Rickyputra</span>
 						</figcaption>
 					</figure>
 				</Reveal>

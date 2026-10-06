@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useState, useSyncExternalStore } from 'react';
 
-import { toRunic } from '@/lib/runes';
 import { site } from '@/lib/site';
 
 export default function Nav() {
@@ -13,14 +12,12 @@ export default function Nav() {
 		return () => window.removeEventListener('scroll', onChange);
 	}, []);
 
-	// The masthead only grows a background once the page has moved.
 	const scrolled = useSyncExternalStore(
 		subscribeScroll,
 		() => window.scrollY > 24,
 		() => false,
 	);
 
-	// Lock the page behind the mobile sheet, and let Escape close it.
 	useEffect(() => {
 		if (!open) return;
 		const prev = document.body.style.overflow;
@@ -37,40 +34,30 @@ export default function Nav() {
 		<>
 			<a
 				href="#main"
-				className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-200 focus:bg-rune focus:px-4 focus:py-2 focus:text-void"
+				className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-200 focus:bg-hot focus:px-4 focus:py-2 focus:text-ink"
 			>
 				Skip to content
 			</a>
 
+			{/* The specimen registration bar, pinned to the top of the sheet. */}
 			<header
-				className={`fixed inset-x-0 top-0 z-100 transition-colors duration-500 ${
-					scrolled
-						? 'border-b border-edge bg-void/85 backdrop-blur-md'
-						: 'border-b border-transparent'
+				className={`fixed inset-x-0 top-0 z-100 border-b transition-colors duration-500 ${
+					scrolled ? 'border-line bg-bg/92 backdrop-blur-md' : 'border-line/60 bg-bg/70 backdrop-blur-sm'
 				}`}
 			>
-				<nav className="shell flex h-20 items-center justify-between" aria-label="Primary">
-					<a
-						href="#top"
-						className="group flex items-center gap-3"
-						aria-label={`${site.name} — back to top`}
-					>
-						<span className="runic text-lg leading-none transition-colors group-hover:text-rune-bright">
-							ᚱᚱ
-						</span>
-						<span className="hidden font-display text-sm font-semibold tracking-[0.3em] text-frost-dim uppercase transition-colors group-hover:text-frost sm:block">
-							Reinard
-						</span>
+				<nav className="pad flex h-14 items-center gap-x-8" aria-label="Primary">
+					<a href="#top" className="label text-ink transition-colors hover:text-hot">
+						Specimen <span className="text-hot">RR-001</span>
 					</a>
 
-					<ul className="hidden items-center gap-10 md:flex">
+					<ul className="ml-auto hidden items-center gap-7 md:flex">
 						{site.nav.map((item) => (
 							<li key={item.href}>
 								<a href={item.href} className="group flex items-baseline gap-2">
-									<span className="label text-edge-lit transition-colors group-hover:text-rune">
-										{item.index}
+									<span className="label text-line-lit transition-colors group-hover:text-hot">
+										§{item.index}
 									</span>
-									<span className="font-display text-sm font-semibold tracking-[0.2em] text-frost-dim uppercase transition-colors group-hover:text-frost">
+									<span className="label text-dim transition-colors group-hover:text-ink">
 										{item.label}
 									</span>
 								</a>
@@ -81,62 +68,54 @@ export default function Nav() {
 					<button
 						type="button"
 						onClick={() => setOpen(true)}
-						className="label border border-edge-lit px-3 py-2 text-frost transition-colors hover:border-rune hover:text-rune md:hidden"
+						className="label ml-auto border border-line-lit px-3 py-1.5 text-ink transition-colors hover:border-hot hover:text-hot md:hidden"
 						aria-expanded={open}
-						aria-controls="mobile-menu"
+						aria-controls="mobile-index"
 					>
-						Menu
+						Index
 					</button>
 				</nav>
 			</header>
 
-			{/* Mobile sheet — full-bleed editorial index. */}
-			<div
-				id="mobile-menu"
-				hidden={!open}
-				className="fixed inset-0 z-200 bg-void md:hidden"
-			>
-				<div className="shell flex h-20 items-center justify-between">
-					<span className="runic text-lg leading-none">ᚱᚱ</span>
+			<div id="mobile-index" hidden={!open} className="fixed inset-0 z-200 bg-bg md:hidden">
+				<div className="pad flex h-14 items-center justify-between border-b border-line">
+					<span className="label text-ink">
+						Specimen <span className="text-hot">RR-001</span>
+					</span>
 					<button
 						type="button"
 						onClick={() => setOpen(false)}
-						className="label border border-edge-lit px-3 py-2 text-frost"
+						className="label border border-line-lit px-3 py-1.5 text-ink"
 					>
 						Close
 					</button>
 				</div>
 
-				<ul className="shell mt-6 border-t border-edge">
+				<ul className="pad mt-4">
 					{site.nav.map((item) => (
-						<li key={item.href} className="border-b border-edge">
+						<li key={item.href} className="border-b border-line">
 							<a
 								href={item.href}
 								onClick={() => setOpen(false)}
-								className="flex items-baseline gap-4 py-6"
+								className="flex items-baseline gap-4 py-5"
 							>
-								<span className="label text-rune">{item.index}</span>
-								<span className="font-display text-3xl font-semibold tracking-[0.12em] uppercase">
-									{item.label}
-								</span>
-								<span className="runic ml-auto text-sm opacity-60" aria-hidden>
-									{toRunic(item.label)}
-								</span>
+								<span className="label text-hot">§{item.index}</span>
+								<span className="font-display text-2xl font-light">{item.label}</span>
 							</a>
 						</li>
 					))}
 				</ul>
 
-				<div className="shell mt-10 flex gap-6">
+				<div className="pad mt-8 flex gap-6">
 					{site.socials.map((s) => (
 						<a
 							key={s.href}
 							href={s.href}
 							target="_blank"
 							rel="noreferrer"
-							className="label text-frost-dim transition-colors hover:text-rune"
+							className="label text-dim transition-colors hover:text-hot"
 						>
-							{s.label}
+							{s.label} ↗
 						</a>
 					))}
 				</div>

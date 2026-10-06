@@ -1,59 +1,51 @@
 @import 'tailwindcss';
 
 /* ------------------------------------------------------------------
-   Design tokens — Norse / Midgard
-   Cold black stone, frost-white text, one burnished gold for anything
-   that "glows", ember and blood held back for rare emphasis.
+   Runestone — weathered limestone, red ochre, lichen, moss dark.
+   Ochre is the pigment rune carvers actually worked into the grooves.
 ------------------------------------------------------------------ */
 @theme {
-	--color-void: #06080b;
-	--color-abyss: #0a0e13;
-	--color-stone: #11171e;
-	--color-stone-lit: #18202a;
-	--color-edge: #1f2a35;
-	--color-edge-lit: #33424f;
+	--color-bg: #101410;
+	--color-bg-deep: #0b0e0b;
+	--color-surface: #1a1f19;
+	--color-surface-lit: #232a21;
+	--color-line: #2b332a;
+	--color-line-lit: #46503f;
 
-	--color-frost: #e6edf3;
-	--color-frost-dim: #a7b7c3;
-	--color-ash: #7d8d99;
+	--color-ink: #ece9dd;
+	--color-dim: #b3b3a0;
+	--color-mute: #86897a;
 
-	--color-rune: #d9a441;
-	--color-rune-bright: #f2c977;
-	--color-ember: #c4632a;
-	--color-blood: #9c2f21;
-	--color-bifrost: #5fa8c7;
+	--color-hot: #c4543a;
+	--color-hot-bright: #d9694d;
+	--color-cool: #9aa87e;
 
-	--font-display: var(--font-display-src), 'Trajan Pro', Georgia, serif;
+	--font-display: var(--font-display-src), 'Iowan Old Style', Georgia, serif;
 	--font-sans: var(--font-sans-src), ui-sans-serif, system-ui, sans-serif;
 	--font-mono: var(--font-mono-src), ui-monospace, 'SF Mono', monospace;
-	--font-runic: var(--font-runic-src), 'Segoe UI Historic', 'Noto Sans Runic', serif;
+	--font-runic: var(--font-runic-src), 'Segoe UI Historic', serif;
 
-	/* Carved display sizes — tight, heavy, letterspaced like an inscription. */
-	--text-display: clamp(2.75rem, 6.5vw, 5.75rem);
-	--text-display--line-height: 1.02;
-	--text-display--letter-spacing: 0.01em;
+	--text-display: clamp(2.25rem, 5.5vw, 4.25rem);
+	--text-display--line-height: 1.05;
+	--text-display--letter-spacing: -0.01em;
 
-	--text-headline: clamp(1.75rem, 4.5vw, 3.25rem);
-	--text-headline--line-height: 1.1;
-	--text-headline--letter-spacing: 0.02em;
+	--text-headline: clamp(1.5rem, 3.4vw, 2.6rem);
+	--text-headline--line-height: 1.2;
 
-	--text-lede: clamp(1.05rem, 1.7vw, 1.3rem);
-	--text-lede--line-height: 1.65;
-
-	--ease-forge: cubic-bezier(0.2, 0.8, 0.2, 1);
+	--ease-cut: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 @layer base {
 	html {
 		scroll-behavior: smooth;
-		scroll-padding-top: 5.5rem;
+		scroll-padding-top: 4.5rem;
 		-webkit-text-size-adjust: 100%;
 		color-scheme: dark;
 	}
 
 	body {
-		background-color: var(--color-void);
-		color: var(--color-frost);
+		background-color: var(--color-bg);
+		color: var(--color-ink);
 		font-family: var(--font-sans);
 		font-synthesis-weight: none;
 		-webkit-font-smoothing: antialiased;
@@ -62,16 +54,16 @@
 	*,
 	::before,
 	::after {
-		border-color: var(--color-edge);
+		border-color: var(--color-line);
 	}
 
 	::selection {
-		background-color: var(--color-rune);
-		color: var(--color-void);
+		background-color: var(--color-hot);
+		color: var(--color-ink);
 	}
 
 	:focus-visible {
-		outline: 2px solid var(--color-rune);
+		outline: 2px solid var(--color-hot);
 		outline-offset: 3px;
 	}
 
@@ -91,94 +83,52 @@
 }
 
 @layer components {
-	.shell {
-		width: 100%;
-		max-width: 84rem;
-		margin-inline: auto;
+	/* The catalogue's gutter. Full-bleed rules, inset content. */
+	.pad {
 		padding-inline: 1.5rem;
 	}
 
 	@media (min-width: 768px) {
-		.shell {
-			padding-inline: 3rem;
+		.pad {
+			padding-inline: 2.5rem;
 		}
 	}
 
-	@media (min-width: 1280px) {
-		.shell {
-			padding-inline: 4rem;
-		}
-	}
-
-	/* Mono chrome: section numbers, meta rows, technical labels. */
+	/* Specimen label: the registration numbers, field terms, column heads. */
 	.label {
 		font-family: var(--font-mono);
-		font-size: 0.6875rem;
+		font-size: 0.625rem;
 		letter-spacing: 0.22em;
 		text-transform: uppercase;
-		color: var(--color-ash);
+		color: var(--color-mute);
 	}
 
-	/* Actual Elder Futhark, set in Noto Sans Runic. */
 	.runic {
 		font-family: var(--font-runic);
 		letter-spacing: 0.3em;
-		color: var(--color-rune);
+		color: var(--color-hot);
 	}
 
-	/* A carved slab: lit top edge, shadowed base, cold stone gradient. */
-	.slab {
-		background-image: linear-gradient(
-			180deg,
-			var(--color-stone-lit) 0%,
-			var(--color-stone) 55%,
-			var(--color-abyss) 100%
-		);
-		border: 1px solid var(--color-edge);
-		box-shadow:
-			inset 0 1px 0 rgb(255 255 255 / 0.05),
-			inset 0 -1px 0 rgb(0 0 0 / 0.5),
-			0 20px 40px -24px rgb(0 0 0 / 0.9);
-	}
-
-	/* Gold hairline that fades out at both ends, like an inlay. */
-	.inlay {
-		height: 1px;
-		background-image: linear-gradient(
-			90deg,
-			transparent,
-			var(--color-rune) 18%,
-			var(--color-rune) 82%,
-			transparent
-		);
-		opacity: 0.45;
+	/* Field-notes row: term left, value right, hairline under. */
+	.record-row {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 1.5rem;
+		border-bottom: 1px solid var(--color-line);
+		padding-block: 0.7rem;
 	}
 }
 
-/* Cold stone tooth over the whole page. */
+/* Stone tooth. Subtler than paper grain — this is a dark ground. */
 .grain::after {
 	content: '';
 	position: fixed;
 	inset: 0;
 	z-index: 9999;
 	pointer-events: none;
-	opacity: 0.05;
-	mix-blend-mode: overlay;
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* Vignette — pulls the eye to the centre, the way the game frames a scene. */
-.grain::before {
-	content: '';
-	position: fixed;
-	inset: 0;
-	z-index: 9998;
-	pointer-events: none;
-	background: radial-gradient(
-		120% 90% at 50% 40%,
-		transparent 45%,
-		rgb(0 0 0 / 0.55) 100%
-	);
+	opacity: 0.045;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* ------------------------------------------------------------------
@@ -186,10 +136,10 @@
 ------------------------------------------------------------------ */
 [data-reveal] {
 	opacity: 0;
-	transform: translateY(22px);
+	transform: translateY(18px);
 	transition:
-		opacity 0.8s var(--ease-forge),
-		transform 0.8s var(--ease-forge);
+		opacity 0.7s var(--ease-cut),
+		transform 0.7s var(--ease-cut);
 	will-change: opacity, transform;
 }
 
@@ -205,86 +155,4 @@
 		transform: none;
 		transition: none;
 	}
-}
-
-/* ==================================================================
-   DESIGN LAB — three candidate directions at /lab
-   Semantic tokens that each theme class re-points. Utilities like
-   `bg-bg` / `text-hot` therefore work identically in every theme.
-================================================================== */
-@theme {
-	--color-bg: var(--c-bg);
-	--color-surface: var(--c-surface);
-	--color-line: var(--c-line);
-	--color-line-lit: var(--c-line-lit);
-	--color-ink: var(--c-ink);
-	--color-dim: var(--c-dim);
-	--color-mute: var(--c-mute);
-	--color-hot: var(--c-hot);
-	--color-cool: var(--c-cool);
-
-	--font-hero: var(--c-display);
-}
-
-/* Defaults, so the tokens always resolve to something. */
-:root {
-	--c-bg: #06080b;
-	--c-surface: #11171e;
-	--c-line: #1f2a35;
-	--c-line-lit: #33424f;
-	--c-ink: #e6edf3;
-	--c-dim: #a7b7c3;
-	--c-mute: #7d8d99;
-	--c-hot: #d9a441;
-	--c-cool: #5fa8c7;
-	--c-display: var(--font-display-src), Georgia, serif;
-}
-
-/* ---- I. Yggdrasil — night forest, bronze tree, verdigris light ---- */
-.theme-yggdrasil {
-	--c-bg: #05090a;
-	--c-surface: #0b1113;
-	--c-line: #1b2724;
-	--c-line-lit: #2f423d;
-	--c-ink: #e8f0ea;
-	--c-dim: #a9bdb4;
-	--c-mute: #7c918a;
-	--c-hot: #c8a24a;
-	--c-cool: #57c99a;
-	--c-display: var(--font-cormorant-src), Georgia, serif;
-}
-
-/* ---- II. Muspelheim — charcoal iron, molten orange, white heat ---- */
-.theme-forge {
-	--c-bg: #0b0a09;
-	--c-surface: #16130f;
-	--c-line: #2a241d;
-	--c-line-lit: #453a2d;
-	--c-ink: #f2ece4;
-	--c-dim: #b8ac9d;
-	--c-mute: #8b7f70;
-	--c-hot: #ff6b1a;
-	--c-cool: #ffd08a;
-	--c-display: var(--font-archivo-src), 'Arial Black', sans-serif;
-}
-
-/* ---- III. Runestone — moss dark, pale limestone, red ochre ---- */
-.theme-runestone {
-	--c-bg: #101410;
-	--c-surface: #1a1f19;
-	--c-line: #2b332a;
-	--c-line-lit: #46503f;
-	--c-ink: #ece9dd;
-	--c-dim: #b3b3a0;
-	--c-mute: #86897a;
-	--c-hot: #c4543a;
-	--c-cool: #9aa87e;
-	--c-display: var(--font-spectral-src), Georgia, serif;
-}
-
-.theme-yggdrasil,
-.theme-forge,
-.theme-runestone {
-	background-color: var(--c-bg);
-	color: var(--c-ink);
 }

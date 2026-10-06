@@ -3,10 +3,12 @@
 Personal portfolio — Norse-themed, built with Next.js (App Router),
 Tailwind CSS and a React Three Fiber hero. Deployed on Vercel.
 
-The design takes after God of War's Norse era: cold black stone, frost
-white, a single burnished gold for anything that glows, chiselled Roman
-capitals for display and a clean sans for anything you actually have to
-read. Section labels carry their own Elder Futhark transliteration.
+The design reads as an archaeological record: the page is a catalogue
+entry for a carved standing stone. Moss dark ground, weathered limestone
+text, red ochre — the pigment rune carvers actually worked into the
+grooves — and lichen green. Specimen numbers, field notes, figure
+captions, and a proper catalogue table. Section labels carry their own
+Elder Futhark transliteration.
 
 **Live:** https://reinardricky.com
 
@@ -16,7 +18,7 @@ read. Section labels carry their own Elder Futhark transliteration.
 |---|---|
 | Framework | Next.js 16 (App Router, React 19) |
 | Styling | Tailwind CSS 4 (CSS-first config, no `tailwind.config.js`) |
-| Type | Cinzel (display) · Inter Tight (UI) · JetBrains Mono (chrome) · Noto Sans Runic |
+| Type | Spectral (display) · Inter Tight (UI) · JetBrains Mono (chrome) · Noto Sans Runic |
 | 3D | three.js + React Three Fiber 9 + drei |
 | Language | TypeScript |
 
@@ -92,31 +94,24 @@ It is built to stay cheap:
 - **Lighter on phones.** 90 embers instead of 260; device pixel ratio
   capped at 1.75.
 
-## Design lab (`/lab`)
+## Hero scene options (`/lab`)
 
-Three candidate directions live at `/lab`, each a full page on its own
-route, with a switcher pinned to the bottom so they can be compared back
-to back:
+The layout is settled; the 3D in the hero plate is not. Four candidates
+are switchable at `/lab`, each shown in the real plate at the real size:
 
-| | Direction | The 3D scene |
+| | Option | What it is |
 |---|---|---|
-| I | **Yggdrasil** | A branching world tree drawn in light, sap pulsing outward along every branch |
-| II | **Muspelheim** | A mass of iron at working heat, cracks glowing molten, sparks rising |
-| III | **Runestone** | A carved standing stone, runes cut and filled with red ochre, under raking light |
+| 1 | **Artifact scan** | The stone as a point cloud, a scan plane sweeping up it, the inscription resolving as it passes |
+| 2 | **Star chart** | A celestial sphere with figures drawn over it in ochre rule lines |
+| 3 | **Contour survey** | Terrain read as contour lines, every fourth drawn heavier as an index contour |
+| 4 | **Bind-rune** | Seven runes sharing one stave, cut as real bars and lit from a low angle |
 
-They share content (`lib/site.ts`, `lib/skills.ts`) and differ in palette,
-type, layout and scene. Palettes are semantic tokens (`--c-bg`, `--c-hot`,
-…) re-pointed by a `.theme-*` class, so utilities like `bg-bg` and
-`text-hot` work identically in all three.
-
-The lab is self-contained: its extra fonts are declared in
-`app/lab/layout.tsx` so they never load on the live site, and the site's
-nav and vignette live in the `app/(site)` route group so they do not bleed
-into the candidates. Once a direction is chosen, promote it and delete
-`app/lab/` and `components/lab/`.
+Set the winner in `lib/site.ts` (`heroScene`), then delete `app/lab/` and
+the unused folders under `components/three/scenes/`. Each scene is its own
+lazy chunk, so only the chosen one is ever fetched.
 
 ## Still to do
 
 - Add a **projects section** — live demos matter more to most readers than
   anything else on the page.
-- Refresh the About copy; it still describes a student.
+- Pick a hero scene at `/lab` and set it in `lib/site.ts`.

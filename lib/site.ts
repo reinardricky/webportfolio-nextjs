@@ -3,7 +3,12 @@
  * Optional fields render only when filled in, so leaving one blank
  * removes it from the page instead of showing a placeholder.
  */
+import type { SceneId } from '@/components/three/scenes/registry';
+
 export const site = {
+	/** The hero's 3D scene. Compare the options at /lab. */
+	heroScene: 'scan' as SceneId,
+
 	name: 'Pascalis Reinard Rickyputra',
 	firstName: 'Reinard',
 	role: 'Frontend Engineer',

@@ -2,108 +2,100 @@ import HeroVisual from '@/components/three/HeroVisual';
 import { toRunic } from '@/lib/runes';
 import { site } from '@/lib/site';
 
-const meta = [
-	{ label: 'Based in', value: site.location },
-	{ label: 'Forged with', value: 'React · Next.js · TypeScript' },
-	{ label: 'Also wields', value: 'React Native · Node.js · Flutter' },
-	// An empty optional field drops its column rather than showing a blank.
-].filter((row) => row.value);
-
 export default function Hero() {
+	/* Driven from lib/site.ts so the record cannot drift from the data. */
+	const fieldNotes: [string, string][] = [
+		['Classification', site.role],
+		['Position', site.employer],
+		...(site.location ? ([['Recorded at', site.location]] as [string, string][]) : []),
+		['Discipline', 'Electrical Engineering, UI — 2022'],
+		['Condition', 'Active'],
+	];
+
 	return (
-		<section
-			id="top"
-			className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden pt-28 pb-10 md:pb-16"
-		>
-			{/* The gate sits behind the type, dimmed on phones for contrast. */}
-			<div className="pointer-events-none absolute inset-y-0 right-0 w-full opacity-40 md:w-[58%] md:opacity-100 lg:w-[54%]">
-				<HeroVisual />
-			</div>
-
-			{/* A carved column of runes down the left edge. */}
-			<div
-				className="runic pointer-events-none absolute top-1/2 left-2 hidden -translate-y-1/2 text-xs leading-[2.2] opacity-25 [writing-mode:vertical-rl] xl:block"
-				aria-hidden
-			>
-				{toRunic('midgard')}
-			</div>
-
-			<div className="shell relative">
-				<p className="label flex items-center gap-3 text-rune">
+		<section id="top" className="border-b border-line">
+			{/* Registration strip. */}
+			<div className="pad border-b border-line py-2.5">
+				<div className="flex flex-wrap items-center gap-x-8 gap-y-1">
+					<span className="label">
+						Specimen <span className="text-hot">RR-2026-001</span>
+					</span>
+					<span className="label hidden sm:inline">Elder Futhark · 24 glyphs</span>
+					<span className="label hidden md:inline">Pigment: red ochre</span>
 					{site.availability ? (
-						<>
-							<span className="inline-block size-1.5 rotate-45 bg-rune" aria-hidden />
-							{site.availability}
-						</>
-					) : (
-						<>
-							<span className="inline-block size-1.5 rotate-45 bg-rune" aria-hidden />
-							{site.role}
-						</>
-					)}
-				</p>
-
-				<h1 className="mt-6 font-display text-display font-bold text-frost uppercase lg:max-w-[58%]">
-					<span className="block">Pascalis</span>
-					<span className="block">Reinard</span>
-					<span className="block text-rune">Rickyputra</span>
-				</h1>
-
-				{/* The name again, carved. */}
-				<p className="runic mt-5 text-sm opacity-55 lg:max-w-[58%] sm:text-base" aria-hidden>
-					{toRunic('pascalis reinard')}
-				</p>
-
-				<div className="inlay mt-8 max-w-md" />
-
-				<p className="mt-8 max-w-lg text-lede text-pretty text-frost-dim lg:max-w-[46%]">
-					A frontend engineer in Jakarta, building responsive web and mobile
-					products in React, Next.js, and React Native.
-				</p>
-
-				<div className="mt-10 flex flex-wrap items-center gap-3">
-					<a
-						href="#about"
-						className="group inline-flex items-center gap-3 border border-rune bg-rune px-6 py-3.5 font-display text-sm font-semibold tracking-[0.18em] text-void uppercase transition-colors hover:bg-transparent hover:text-rune"
-					>
-						Enter
-						<span
-							aria-hidden
-							className="transition-transform duration-300 ease-forge group-hover:translate-y-0.5"
-						>
-							↓
-						</span>
-					</a>
-					<a
-						href="#contact"
-						className="inline-flex items-center border border-edge-lit px-6 py-3.5 font-display text-sm font-semibold tracking-[0.18em] text-frost-dim uppercase transition-colors hover:border-rune hover:text-rune"
-					>
-						Send word
-					</a>
-					{site.resumeUrl ? (
-						<a
-							href={site.resumeUrl}
-							target="_blank"
-							rel="noreferrer"
-							className="label px-2 py-3.5 text-frost-dim underline decoration-edge-lit underline-offset-4 transition-colors hover:text-rune"
-						>
-							Résumé
-						</a>
+						<span className="label ml-auto text-cool">{site.availability}</span>
 					) : null}
 				</div>
+			</div>
 
-				{/* Meta strip — the inscription along the base of the stone. */}
-				<dl className="mt-14 grid grid-cols-1 border-t border-edge sm:grid-cols-3">
-					{meta.map((row) => (
-						<div
-							key={row.label}
-							className="border-b border-edge py-4 sm:border-r sm:border-b-0 sm:pr-6 sm:last:border-r-0 sm:[&:not(:first-child)]:pl-6"
+			{/* Plate left, record right. */}
+			<div className="grid min-h-[78svh] grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+				<div className="relative order-2 min-h-[46svh] border-line lg:order-1 lg:min-h-0 lg:border-r">
+					<div
+						className="absolute inset-0 bg-[radial-gradient(58%_58%_at_50%_45%,color-mix(in_srgb,var(--color-cool)_9%,transparent),transparent_76%)]"
+						aria-hidden
+					/>
+					<HeroVisual className="absolute inset-0" />
+
+					<p className="label absolute bottom-4 left-4 leading-relaxed">
+						Fig. 1
+						<br />
+						<span className="text-hot">Scale 1:1</span>
+					</p>
+				</div>
+
+				<div className="pad order-1 flex flex-col justify-center py-16 lg:order-2 lg:py-20">
+					<p className="label text-hot">Record 001 — subject</p>
+
+					<h1 className="mt-5 font-display text-display font-light text-ink">
+						Pascalis Reinard
+						<br />
+						Rickyputra
+					</h1>
+
+					<p className="runic mt-4 text-sm opacity-65" aria-hidden>
+						{toRunic('reinard')}
+					</p>
+
+					<p className="mt-7 max-w-md leading-relaxed text-dim">
+						A frontend engineer in Jakarta, building responsive web and mobile products
+						in React, Next.js, and React Native.
+					</p>
+
+					<dl className="mt-9 max-w-md border-t border-line font-mono text-[11px]">
+						{fieldNotes.map(([term, value]) => (
+							<div key={term} className="record-row">
+								<dt className="label">{term}</dt>
+								<dd className="text-right tracking-wider text-ink">{value}</dd>
+							</div>
+						))}
+					</dl>
+
+					<div className="mt-9 flex flex-wrap gap-3">
+						<a
+							href="#about"
+							className="label border border-hot px-5 py-2.5 text-hot transition-colors hover:bg-hot hover:text-ink"
 						>
-							<dt className="label">{row.label}</dt>
-							<dd className="mt-1.5 text-sm text-frost-dim">{row.value}</dd>
-						</div>
-					))}
-				</dl>
+							Read the record
+						</a>
+						<a
+							href="#contact"
+							className="label border border-line-lit px-5 py-2.5 text-dim transition-colors hover:border-ink hover:text-ink"
+						>
+							Get in touch
+						</a>
+						{site.resumeUrl ? (
+							<a
+								href={site.resumeUrl}
+								target="_blank"
+								rel="noreferrer"
+								className="label px-2 py-2.5 text-dim underline decoration-line-lit underline-offset-4 transition-colors hover:text-hot"
+							>
+								Résumé
+							</a>
+						) : null}
+					</div>
+				</div>
 			</div>
 		</section>
 	);

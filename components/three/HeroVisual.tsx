@@ -1,83 +1,59 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 
-import { usePrefersReducedMotion } from '@/lib/usePrefersReducedMotion';
-import SceneBoundary from './SceneBoundary';
-import StaticShell from './StaticShell';
+import SceneHost from '@/components/three/SceneHost';
+import {
+	ConstellationFallback,
+	ScanFallback,
+	SigilFallback,
+	SurveyFallback,
+} from '@/components/three/scenes/Fallbacks';
+import type { SceneId } from '@/components/three/scenes/registry';
+import { site } from '@/lib/site';
 
-// WebGL never runs on the server, and three is heavy — keep it out of the
-// first payload entirely and let the SVG shell hold the space meanwhile.
-const HeroScene = dynamic(() => import('./HeroScene'), {
-	ssr: false,
-	loading: () => <StaticShell />,
-});
+/*
+ * One lazy chunk per scene, so only the chosen one is ever fetched and
+ * three.js stays out of the first load entirely.
+ */
+const LAZY = {
+	scan: dynamic(() => import('@/components/three/scenes/scan/Scene'), {
+		ssr: false,
+		loading: () => <ScanFallback />,
+	}),
+	constellation: dynamic(() => import('@/components/three/scenes/constellation/Scene'), {
+		ssr: false,
+		loading: () => <ConstellationFallback />,
+	}),
+	survey: dynamic(() => import('@/components/three/scenes/survey/Scene'), {
+		ssr: false,
+		loading: () => <SurveyFallback />,
+	}),
+	sigil: dynamic(() => import('@/components/three/scenes/sigil/Scene'), {
+		ssr: false,
+		loading: () => <SigilFallback />,
+	}),
+} as const;
 
-// Probed once per page load, then cached — creating throwaway canvases on
-// every render would be its own performance bug.
-let webglSupport: boolean | null = null;
+const FALLBACKS = {
+	scan: <ScanFallback />,
+	constellation: <ConstellationFallback />,
+	survey: <SurveyFallback />,
+	sigil: <SigilFallback />,
+} as const;
 
-function supportsWebGL(): boolean {
-	if (webglSupport !== null) return webglSupport;
-	try {
-		const canvas = document.createElement('canvas');
-		webglSupport = Boolean(
-			canvas.getContext('webgl2') ??
-				canvas.getContext('webgl') ??
-				canvas.getContext('experimental-webgl'),
-		);
-	} catch {
-		webglSupport = false;
-	}
-	return webglSupport;
-}
-
-/** Support never changes mid-session, so there is nothing to subscribe to. */
-const noSubscribe = () => () => {};
-
-export default function HeroVisual() {
-	const host = useRef<HTMLDivElement>(null);
-	const reducedMotion = usePrefersReducedMotion();
-	const [inView, setInView] = useState(true);
-	const [lost, setLost] = useState(false);
-
-	// Server and first paint render the SVG shell; WebGL takes over after.
-	const webgl = useSyncExternalStore(noSubscribe, supportsWebGL, () => false);
-
-	// Stop drawing the moment the hero leaves the viewport.
-	useEffect(() => {
-		const el = host.current;
-		if (!el || typeof IntersectionObserver === 'undefined') return;
-
-		const io = new IntersectionObserver(
-			([entry]) => setInView(entry.isIntersecting),
-			{ rootMargin: '120px' },
-		);
-		io.observe(el);
-		return () => io.disconnect();
-	}, []);
-
-	const frameloop = reducedMotion ? 'demand' : inView ? 'always' : 'never';
+export default function HeroVisual({
+	scene = site.heroScene,
+	className,
+}: {
+	scene?: SceneId;
+	className?: string;
+}) {
+	const Scene = LAZY[scene];
 
 	return (
-		<div
-			ref={host}
-			// Decorative: the hero's meaning lives in the headline beside it.
-			aria-hidden="true"
-			className="h-full w-full [mask-image:radial-gradient(88%_88%_at_50%_50%,#000_72%,transparent_100%)]"
-		>
-			{webgl && !lost ? (
-				<SceneBoundary fallback={<StaticShell />}>
-					<HeroScene
-						frameloop={frameloop}
-						still={reducedMotion}
-						onContextLost={() => setLost(true)}
-					/>
-				</SceneBoundary>
-			) : (
-				<StaticShell />
-			)}
-		</div>
+		<SceneHost className={className} fallback={FALLBACKS[scene]}>
+			{(state) => <Scene {...state} />}
+		</SceneHost>
 	);
 }
