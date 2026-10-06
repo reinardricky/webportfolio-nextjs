@@ -47,9 +47,9 @@ export default function Home() {
 			<About />
 			<Experience />
 			<Skills />
-			{/* The last section plus footer fill at least one screen, so the
-			    Contact link can scroll it flush under the header like the rest. */}
-			<div className="flex min-h-[calc(100svh-var(--header-h))] flex-col">
+			{/* The last section plus footer are tall enough for the Contact link to
+			    land like the rest: a screen, plus the top padding a jump skips. */}
+			<div className="flex min-h-[calc(100svh-var(--header-h)+var(--band-pt)-var(--band-landing))] flex-col">
 				<Contact />
 				<Footer />
 			</div>

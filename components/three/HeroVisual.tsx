@@ -51,14 +51,16 @@ const FALLBACKS = {
 export default function HeroVisual({
 	scene = site.heroScene,
 	className,
+	style,
 }: {
 	scene?: SceneId;
 	className?: string;
+	style?: React.CSSProperties;
 }) {
 	const Scene = LAZY[scene];
 
 	return (
-		<SceneHost className={className} fallback={FALLBACKS[scene]}>
+		<SceneHost className={className} style={style} fallback={FALLBACKS[scene]}>
 			{(state) => <Scene {...state} />}
 		</SceneHost>
 	);

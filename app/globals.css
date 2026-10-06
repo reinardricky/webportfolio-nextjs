@@ -44,14 +44,23 @@
 
 /* One stacking scale for the whole site — no ad-hoc 9999s. */
 :root {
-	/* Fixed header height. Anchor jumps offset by exactly this, so a
-	   section lands flush under the bar with nothing of the last one showing. */
+	/* Fixed header height. Anchor jumps always clear it (see .band for where
+	   within a section they land). */
 	--header-h: 3.5rem;
+	/* Section top padding, and how much of it stays visible after a nav jump. */
+	--band-pt: 5rem;
+	--band-landing: 2.5rem;
 
 	--z-header: 40;
 	--z-overlay: 50;
 	--z-skip: 60;
 	--z-grain: 70;
+}
+
+@media (min-width: 768px) {
+	:root {
+		--band-pt: 7rem;
+	}
 }
 
 @layer base {
@@ -138,13 +147,16 @@
 
 	/* Section rhythm: bottom runs heavier than top so bands read as settled. */
 	.band {
-		padding-top: 5rem;
+		padding-top: var(--band-pt);
 		padding-bottom: 6rem;
+		/* Jumps skip most of the top padding, so the heading lands just under
+		   the bar instead of below a band of empty space. What is skipped is
+		   this section's own padding, so the previous section stays hidden. */
+		scroll-margin-top: calc(var(--band-landing) - var(--band-pt));
 	}
 
 	@media (min-width: 768px) {
 		.band {
-			padding-top: 7rem;
 			padding-bottom: 8.5rem;
 		}
 	}

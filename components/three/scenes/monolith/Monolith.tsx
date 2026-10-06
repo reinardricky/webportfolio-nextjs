@@ -184,7 +184,7 @@ export default function Monolith({
 			{/* Warm raking key from the upper left — carving only reads lit from the side. */}
 			<directionalLight position={[-4.2, 2.4, 2.2]} intensity={3.1} color="#fff0dc" />
 			{/* Ochre rim from behind, separating the silhouette from the dark ground. */}
-			<directionalLight position={[3.6, 1.6, -1.6]} intensity={3.4} color="#d9694d" />
+			<directionalLight position={[2.4, 1.8, -3.4]} intensity={2.6} color="#d98a6e" />
 			<directionalLight position={[2, -2, 3]} intensity={0.25} color="#9aa87e" />
 			<ambientLight intensity={0.1} color="#a7b0a4" />
 

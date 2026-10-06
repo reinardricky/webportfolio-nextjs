@@ -5,12 +5,12 @@
  */
 import type { SceneId } from '@/components/three/scenes/registry';
 
-/** What fills the right side of the hero. Compare both at /lab. */
-export type HeroVariant = 'portrait' | 'runestone';
+/** How the opening section is composed around the runestone. Compare all at /lab. */
+export type HeroLayout = 'straddle' | 'monument' | 'plate' | 'title';
 
 export const site = {
-	hero: 'runestone' as HeroVariant,
-	/** The 3D scene used when `hero` is 'runestone'. */
+	heroLayout: 'plate' as HeroLayout,
+	/** The 3D scene in the hero. */
 	heroScene: 'monolith' as SceneId,
 
 	/** Catalogue number shown in the chrome — header, hero and footer. */

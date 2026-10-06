@@ -13,9 +13,6 @@ const fieldNotes: [string, string][] = [
 ];
 
 export default function About() {
-	// The hero already shows the photo in the portrait layout; don't repeat it.
-	const showPortrait = site.hero !== 'portrait';
-
 	const notes = (
 		<dl className="border-t border-line font-mono text-[11px]">
 			{fieldNotes.map(([term, value]) => (
@@ -31,8 +28,12 @@ export default function About() {
 		<section id="about" className="pad band border-b border-line">
 			<SectionHeading index="01" label="About" title="From electrical engineering to the web." />
 
-			<div className="mt-12 grid gap-12 md:grid-cols-12 md:gap-10">
-				<Reveal className="md:col-span-6">
+			{/*
+			 * Phones read story → photo → field notes. From md up the notes sit
+			 * under the story in the left column, the photo spanning both rows.
+			 */}
+			<div className="mt-12 grid gap-12 md:grid-cols-12 md:gap-x-10">
+				<Reveal className="md:col-span-6 md:row-start-1">
 					<div className="max-w-[62ch] space-y-6 leading-relaxed text-dim">
 						<p className="text-lg leading-relaxed text-ink/90 md:text-xl">
 							I studied Electrical Engineering at Universitas Indonesia and graduated in
@@ -54,32 +55,29 @@ export default function About() {
 							understand. I also use Flutter when a project needs it.
 						</p>
 					</div>
-
-					{/* Sits under the prose so both columns finish at a similar height. */}
-					{showPortrait ? <div className="mt-12 max-w-[62ch]">{notes}</div> : null}
 				</Reveal>
 
-				<Reveal className="md:col-span-5 md:col-start-8" delay={0.08}>
-					{showPortrait ? (
-						<figure className="group">
-							<div className="border border-line bg-surface p-1.5 shadow-plate transition-colors duration-500 group-hover:border-line-lit">
-								<Image
-									src={Portrait}
-									alt="Portrait of Pascalis Reinard Rickyputra"
-									placeholder="blur"
-									sizes="(min-width: 768px) 40vw, 100vw"
-									className="h-auto w-full saturate-[0.7] contrast-[1.05] transition-[filter] duration-700 ease-cut group-hover:saturate-100"
-								/>
-							</div>
-							<figcaption className="label mt-3 leading-relaxed">
-								Fig. 2
-								<br />
-								<span className="text-hot">Pascalis Reinard Rickyputra</span>
-							</figcaption>
-						</figure>
-					) : (
-						notes
-					)}
+				<Reveal className="md:col-span-5 md:col-start-8 md:row-span-2 md:row-start-1" delay={0.08}>
+					<figure className="group">
+						<div className="border border-line bg-surface p-1.5 shadow-plate transition-colors duration-500 group-hover:border-line-lit">
+							<Image
+								src={Portrait}
+								alt="Portrait of Pascalis Reinard Rickyputra"
+								placeholder="blur"
+								sizes="(min-width: 768px) 40vw, 100vw"
+								className="h-auto w-full saturate-[0.7] contrast-[1.05] transition-[filter] duration-700 ease-cut group-hover:saturate-100"
+							/>
+						</div>
+						<figcaption className="label mt-3 leading-relaxed">
+							Fig. 2
+							<br />
+							<span className="text-hot">Pascalis Reinard Rickyputra</span>
+						</figcaption>
+					</figure>
+				</Reveal>
+
+				<Reveal className="max-w-[62ch] md:col-span-6 md:row-start-2" delay={0.12}>
+					{notes}
 				</Reveal>
 			</div>
 		</section>

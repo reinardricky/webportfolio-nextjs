@@ -39,10 +39,12 @@ export default function SceneHost({
 	children,
 	fallback,
 	className = '',
+	style,
 }: {
 	children: (state: SceneState) => ReactNode;
 	fallback: ReactNode;
 	className?: string;
+	style?: React.CSSProperties;
 }) {
 	const host = useRef<HTMLDivElement>(null);
 	const scrollRef = useRef(0);
@@ -102,7 +104,7 @@ export default function SceneHost({
 	const frameloop = reducedMotion ? 'demand' : inView ? 'always' : 'never';
 
 	return (
-		<div ref={host} aria-hidden="true" className={className}>
+		<div ref={host} aria-hidden="true" className={className} style={style}>
 			{webgl ? (
 				<SceneBoundary fallback={fallback}>
 					{children({ frameloop, still: reducedMotion, scrollRef, pointerRef })}
