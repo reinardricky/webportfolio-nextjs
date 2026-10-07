@@ -6,7 +6,7 @@ import Hero from '@/components/site/Hero';
 import Skills from '@/components/site/Skills';
 import { education } from '@/lib/experience';
 import { site } from '@/lib/site';
-import { skills } from '@/lib/skills';
+import { allSkillNames } from '@/lib/skills';
 
 /** Structured data so search engines read the page as a person, not a blob. */
 const personJsonLd = {
@@ -32,7 +32,7 @@ const personJsonLd = {
 	})),
 	sameAs: site.socials.map((s) => s.href),
 	// Kept in step with the arsenal rather than restated by hand.
-	knowsAbout: skills.map((s) => s.name),
+	knowsAbout: allSkillNames,
 	knowsLanguage: ['English', 'Indonesian'],
 };
 
