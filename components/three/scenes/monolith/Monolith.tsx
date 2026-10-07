@@ -108,9 +108,19 @@ const RISE = 1.8;
 const IGNITE_AT = 1.1;
 const IGNITE = 2.2;
 
+/** Radians per full host-width of drag: one sweep across turns it ~290°. */
+const DRAG_TURN = Math.PI * 1.6;
+/** Fraction of fling speed left after one second of coasting. */
+const FRICTION = 0.06;
+const MAX_SPIN = 16;
+/** Seconds untouched before the stone eases its face back to the front. */
+const SETTLE_AFTER = 1.4;
+const TAU = Math.PI * 2;
+
 export default function Monolith({
 	scrollRef,
 	pointerRef,
+	dragRef,
 	still,
 	inscription,
 }: SceneState & { inscription: Inscription }) {
@@ -120,6 +130,9 @@ export default function Monolith({
 	const born = useRef<number | null>(null);
 	// Shared with the face shader: how far down the face the glow has reached.
 	const reveal = useRef({ value: 0 });
+	// The ambient pose, eased; the visitor's spin and tilt ride on top undamped.
+	const pose = useRef({ x: 0, y: -0.28 });
+	const spin = useRef({ angle: 0, vel: 0, tilt: 0, idle: SETTLE_AFTER, flare: 0, taps: 0 });
 
 	const geometry = useMemo(() => buildGeometry(), []);
 	const rubble = useMemo(() => buildRubble(), []);
@@ -164,19 +177,62 @@ export default function Monolith({
 
 		const ptr = pointerRef.current;
 		const damp = 1 - Math.pow(0.02, delta);
+		const s = spin.current;
+		const drag = dragRef.current;
+		const dt = Math.max(delta, 1 / 240);
+
+		if (drag.held) {
+			// Grabbed: the stone follows the hand exactly, and the hand's speed
+			// is remembered (smoothed — pointer events don't land every frame).
+			const step = drag.dx * DRAG_TURN;
+			s.angle += step;
+			s.vel = THREE.MathUtils.lerp(s.vel, step / dt, 0.5);
+			s.tilt = THREE.MathUtils.clamp(s.tilt + drag.dy * 1.4, -0.3, 0.3);
+			s.idle = 0;
+		} else {
+			// Released: coast on the fling, then come round to the nearest
+			// full turn so the inscription faces front again.
+			s.angle += s.vel * dt;
+			s.vel *= Math.pow(FRICTION, dt);
+			s.idle += dt;
+			if (s.idle > SETTLE_AFTER && Math.abs(s.vel) < 0.8) {
+				const home = Math.round(s.angle / TAU) * TAU;
+				s.angle = THREE.MathUtils.lerp(s.angle, home, 1 - Math.pow(0.2, dt));
+				s.vel *= Math.pow(0.02, dt);
+			}
+			s.tilt = THREE.MathUtils.lerp(s.tilt, 0, 1 - Math.pow(0.04, dt));
+		}
+		s.vel = THREE.MathUtils.clamp(s.vel, -MAX_SPIN, MAX_SPIN);
+		drag.dx = 0;
+		drag.dy = 0;
+
+		// A tap strikes the stone: the runes flare and it gives a little.
+		if (drag.taps !== s.taps) {
+			s.taps = drag.taps;
+			s.flare = 1;
+			s.vel += (s.vel >= 0 ? 1 : -1) * 1.4;
+		}
+		s.flare = Math.max(0, s.flare - dt * 0.9);
 
 		// A slow sway rather than a spin, so the inscription stays readable.
-		const targetY = -0.28 + Math.sin(t * 0.22) * 0.32 + ptr.x * ptr.active * 0.3;
-		const targetX = -ptr.y * ptr.active * 0.1;
-		g.rotation.y = THREE.MathUtils.lerp(g.rotation.y, targetY, damp);
-		g.rotation.x = THREE.MathUtils.lerp(g.rotation.x, targetX, damp);
-		// Rises out of the ground on arrival, then settles into a slow bob.
-		g.position.y = (1 - rise) * -1.6 + Math.sin(t * 0.5) * 0.035 * rise - scrollRef.current * 0.6;
+		pose.current.y = THREE.MathUtils.lerp(
+			pose.current.y,
+			-0.28 + Math.sin(t * 0.22) * 0.32 + ptr.x * ptr.active * 0.3,
+			damp,
+		);
+		pose.current.x = THREE.MathUtils.lerp(pose.current.x, -ptr.y * ptr.active * 0.1, damp);
+		g.rotation.y = pose.current.y + s.angle;
+		g.rotation.x = pose.current.x + s.tilt;
+		// Rises out of the ground on arrival, then settles into a slow bob; a strike jolts it.
+		const jolt = Math.sin(s.flare * Math.PI) * s.flare * 0.05;
+		g.position.y = (1 - rise) * -1.6 + Math.sin(t * 0.5) * 0.035 * rise + jolt - scrollRef.current * 0.6;
 
-		// The pigment breathes, very slightly, once it has lit.
+		// The pigment breathes, very slightly, once it has lit — and burns
+		// hotter while the stone is spun or struck.
 		const breath = 0.85 + Math.sin(t * 0.9) * 0.15;
-		if (front.current) front.current.emissiveIntensity = breath;
-		if (wash.current) wash.current.intensity = lit * 1.4 * breath;
+		const charge = Math.min(Math.abs(s.vel) / 10, 1) * 0.7 + s.flare * s.flare * 1.8;
+		if (front.current) front.current.emissiveIntensity = breath + charge;
+		if (wash.current) wash.current.intensity = lit * 1.4 * (breath + charge);
 	});
 
 	return (

@@ -48,6 +48,9 @@ const FALLBACKS = {
 	sigil: <SigilFallback />,
 } as const;
 
+/** Scenes that respond to being grabbed. */
+const GRABBABLE: ReadonlySet<SceneId> = new Set(['monolith']);
+
 export default function HeroVisual({
 	scene = site.heroScene,
 	className,
@@ -60,7 +63,7 @@ export default function HeroVisual({
 	const Scene = LAZY[scene];
 
 	return (
-		<SceneHost className={className} style={style} fallback={FALLBACKS[scene]}>
+		<SceneHost className={className} style={style} fallback={FALLBACKS[scene]} interactive={GRABBABLE.has(scene)}>
 			{(state) => <Scene {...state} />}
 		</SceneHost>
 	);

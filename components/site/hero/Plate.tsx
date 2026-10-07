@@ -20,7 +20,7 @@ function Callout({
 }) {
 	return (
 		<div
-			className={`absolute z-20 hidden items-center gap-3 lg:flex ${flip ? 'flex-row-reverse text-right' : ''} ${className}`}
+			className={`pointer-events-none absolute z-20 hidden items-center gap-3 lg:flex ${flip ? 'flex-row-reverse text-right' : ''} ${className}`}
 		>
 			<span className="size-1.5 shrink-0 bg-hot" />
 			<span className="h-px w-[7cqw] min-w-4 shrink bg-hot/50" />
@@ -67,7 +67,9 @@ export default function Plate({ id }: { id?: string }) {
 							<Callout className="top-[68%] right-4 left-[58%]" term="Pigment" value="Red ochre, worked into the cut" />
 
 							<div className="label absolute inset-x-0 bottom-0 z-20 flex items-center justify-between border-t border-line px-4 py-3">
-								<span>Fig. 1</span>
+								<span>
+									Fig. 1 <span className="text-mute motion-reduce:hidden">· <span className="pointer-coarse:hidden">Drag</span><span className="hidden pointer-coarse:inline">Swipe</span> to turn</span>
+								</span>
 								{/* Scale bar, as on a survey photograph. */}
 								<span className="flex items-center gap-2">
 									<span className="flex h-1.5 w-16 border border-mute">
