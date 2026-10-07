@@ -14,7 +14,7 @@ export const site = {
 	heroScene: 'monolith' as SceneId,
 
 	/** Catalogue number shown in the chrome — header, hero and footer. */
-	specimen: 'RR-2026-001',
+	specimen: 'reinardricky',
 
 	name: 'Pascalis Reinard Rickyputra',
 	firstName: 'Reinard',
