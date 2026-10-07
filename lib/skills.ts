@@ -1,34 +1,61 @@
-import type { StaticImageData } from 'next/image';
-
-import CSS from '@/public/assets/skills/css.png';
-import Flutter from '@/public/assets/skills/flutter.png';
-import Git from '@/public/assets/skills/git.png';
-import HTML from '@/public/assets/skills/html.png';
-import JavaScript from '@/public/assets/skills/javascript.png';
-import NextJs from '@/public/assets/skills/nextjs.png';
-import Node from '@/public/assets/skills/node.png';
-import ReactLogo from '@/public/assets/skills/react.png';
-import Tailwind from '@/public/assets/skills/tailwind.png';
-import Typescript from '@/public/assets/skills/typescript.svg';
+/**
+ * What I work with, in tiers. Drawn from the roles in lib/experience.ts
+ * (which mirrors LinkedIn), so every note points at real work — keep the
+ * two in step when a role changes.
+ */
 
 export type Skill = {
 	name: string;
-	logo: StaticImageData;
-	/** Short note on how you actually use it — keep it concrete. */
+	/** One concrete line on where it was used — no adjectives. */
 	note: string;
-	group: 'Language' | 'Framework' | 'Styling' | 'Platform' | 'Data' | 'Tooling';
+	/** Short places-of-use line, shown as a label under core skills. */
+	where?: string;
 };
 
-export const skills: Skill[] = [
-	{ name: 'TypeScript', logo: Typescript, note: 'Type-safe code across projects', group: 'Language' },
-	{ name: 'JavaScript', logo: JavaScript, note: 'Where I started', group: 'Language' },
-	{ name: 'React', logo: ReactLogo, note: 'Reusable components', group: 'Framework' },
-	{ name: 'Next.js', logo: NextJs, note: 'App Router and server rendering', group: 'Framework' },
-	{ name: 'React Native', logo: ReactLogo, note: 'Android apps alongside the web', group: 'Framework' },
-	{ name: 'Flutter', logo: Flutter, note: 'Cross-platform mobile apps', group: 'Framework' },
-	{ name: 'Node.js', logo: Node, note: 'APIs and services', group: 'Platform' },
-	{ name: 'HTML', logo: HTML, note: 'Semantic, accessible markup', group: 'Language' },
-	{ name: 'CSS', logo: CSS, note: 'Responsive layouts', group: 'Styling' },
-	{ name: 'Tailwind', logo: Tailwind, note: 'Consistent styling', group: 'Styling' },
-	{ name: 'Git', logo: Git, note: 'Branching and code review', group: 'Tooling' },
+/** The daily stack. Shown large, one plate each. */
+export const coreSkills: Skill[] = [
+	{
+		name: 'React',
+		note: 'Responsive web apps for Telkom, the Samsung VXT CMS, and the GoPlay web platform.',
+		where: 'Telkom · Samsung · Gojek',
+	},
+	{
+		name: 'Next.js',
+		note: 'Helped move GoPlay from Vue.js to Next.js, and built this site on the App Router.',
+		where: 'Gojek · This site',
+	},
+	{
+		name: 'React Native',
+		note: 'The Android versions of the Telkom web apps, sharing logic with the web.',
+		where: 'Telkom',
+	},
+	{
+		name: 'TypeScript',
+		note: 'The default for every project, built on the JavaScript I started with.',
+		where: 'Everywhere',
+	},
 ];
+
+/** Shipped in production, but not the daily driver. */
+export const supportingSkills: Skill[] = [
+	{ name: 'Kotlin', note: 'Native Android development' },
+	{ name: 'Java', note: 'Native Android, alongside Kotlin' },
+	{ name: 'Flutter', note: 'Employee attendance app at BNI' },
+	{ name: 'Vue.js', note: 'The GoPlay web app before its migration' },
+	{ name: 'Tailwind CSS', note: 'Styling systems, including this site' },
+	{ name: 'Node.js', note: 'APIs and tooling around the frontend' },
+	{ name: 'Git', note: 'Branching, reviews, team workflows' },
+];
+
+/** The work the tools are in service of. */
+export const practices: string[] = [
+	'Reusable component systems',
+	'State management',
+	'Performance with real data',
+	'Web and Android parity',
+	'CMS and internal tools',
+	'Framework migrations',
+];
+
+/** Flat list for structured data (page.tsx knowsAbout). */
+export const allSkillNames = [...coreSkills, ...supportingSkills].map((s) => s.name);
