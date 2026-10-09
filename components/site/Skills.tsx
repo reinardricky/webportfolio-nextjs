@@ -88,8 +88,6 @@ export default function Skills() {
 					</ul>
 				</Reveal>
 			</div>
-
-			<p className="label mt-12">The runes spell each name in the Elder Futhark alphabet.</p>
 		</section>
 	);
 }
