@@ -87,14 +87,11 @@ export default function Plate({ id }: { id?: string }) {
 
 					<div className="relative flex flex-col pt-12 lg:col-span-5 lg:col-start-8 lg:justify-center lg:pt-0">
 						<Eyebrow />
-						<h1 className="mt-6 font-display text-[12.4vw] leading-[0.92] font-light tracking-[-0.01em] text-ink lg:mt-8 lg:text-[6.6cqw]">
+						<h1 className="mt-6 font-display text-[11vw] leading-[0.92] font-light tracking-[-0.01em] text-ink lg:mt-8 lg:text-[5cqw]">
 							<Line ms={100} className="pb-[0.04em]">
-								Pascalis
+								Pascalis Reinard
 							</Line>
-							<Line ms={180} className="pb-[0.04em]">
-								Reinard
-							</Line>
-							<Line ms={260} className="pb-[0.14em]" inner="text-dim italic">
+							<Line ms={180} className="pb-[0.14em]" inner="text-dim italic">
 								{last}
 							</Line>
 						</h1>
