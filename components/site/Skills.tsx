@@ -64,7 +64,7 @@ export default function Skills() {
 								key={skill.name}
 								className="group flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-line py-4"
 							>
-								<dt className="font-display text-lg text-ink transition-colors duration-300 group-hover:text-hot-ink">
+								<dt className="font-display text-xl text-ink transition-colors duration-300 group-hover:text-hot-ink">
 									{skill.name}
 								</dt>
 								<dd className="text-sm text-mute">{skill.note}</dd>

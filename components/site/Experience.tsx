@@ -51,7 +51,7 @@ export default function Experience() {
 								</div>
 
 								<div className="md:col-span-8">
-									<h3 className="font-display text-xl font-normal tracking-tight text-ink md:text-[1.75rem] md:leading-tight">
+									<h3 className="font-display text-2xl font-normal tracking-tight text-ink md:text-[1.75rem] md:leading-tight">
 										{role.title}
 									</h3>
 									<p className="mt-2 text-base font-medium text-hot-ink">{role.company}</p>
@@ -85,7 +85,7 @@ export default function Experience() {
 					{education.map((study) => (
 						<div key={study.school} className="border-b border-line py-6">
 							<div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-								<dt className="font-display text-lg font-normal text-ink">
+								<dt className="font-display text-xl font-normal text-ink">
 									{study.school}
 								</dt>
 								<dd className="label text-hot-ink tabular-nums">{study.period}</dd>
