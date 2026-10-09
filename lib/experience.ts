@@ -13,6 +13,8 @@ export type Role = {
 	location?: string;
 	/** Present roles stay highlighted in the timeline. */
 	current?: boolean;
+	/** Square company mark, served from public/assets/companies. */
+	logo: string;
 	points: string[];
 };
 
@@ -20,6 +22,7 @@ export const roles: Role[] = [
 	{
 		title: 'Frontend Developer',
 		company: 'PT. Dans Multi Pro',
+		logo: '/assets/companies/dans-multi-pro.png',
 		kind: 'Contract',
 		period: 'Oct 2024 — Present',
 		location: 'Jakarta · Hybrid',
@@ -33,6 +36,7 @@ export const roles: Role[] = [
 	{
 		title: 'Software Engineer',
 		company: 'Samsung R&D Institute Indonesia',
+		logo: '/assets/companies/samsung.svg',
 		kind: 'Full-time',
 		period: 'May 2024 — Aug 2024',
 		location: 'Jakarta · Hybrid',
@@ -41,6 +45,7 @@ export const roles: Role[] = [
 	{
 		title: 'Software Engineer — GoPlay',
 		company: 'Gojek',
+		logo: '/assets/companies/gojek.svg',
 		kind: 'Full-time',
 		period: 'Aug 2022 — May 2024',
 		location: 'Jakarta · Hybrid',
@@ -52,6 +57,7 @@ export const roles: Role[] = [
 	{
 		title: 'Frontend Engineer Intern — GoPlay',
 		company: 'Gojek',
+		logo: '/assets/companies/gojek.svg',
 		kind: 'Internship',
 		period: 'May 2022 — Aug 2022',
 		location: 'Jakarta · Hybrid',
@@ -63,6 +69,7 @@ export const roles: Role[] = [
 	{
 		title: 'Frontend Engineering Student — Generasi GIGIH 2.0',
 		company: 'Yayasan Anak Bangsa Bisa (YABB & GoTo)',
+		logo: '/assets/companies/goto-wordmark.png',
 		kind: 'Apprenticeship',
 		period: 'Feb 2022 — Aug 2022',
 		points: [
@@ -74,6 +81,7 @@ export const roles: Role[] = [
 	{
 		title: 'Software Engineer Intern',
 		company: 'PT. Bank Negara Indonesia (Persero) Tbk.',
+		logo: '/assets/companies/bni.png',
 		kind: 'Internship',
 		period: 'Nov 2021 — Feb 2022',
 		location: 'Jakarta',

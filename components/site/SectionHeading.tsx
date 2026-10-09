@@ -12,7 +12,7 @@ export default function SectionHeading({ index, label, title }: Props) {
 	return (
 		<header>
 			<div className="flex items-baseline gap-4">
-				<p className="label text-hot">
+				<p className="label text-hot-ink">
 					§ {index} — {label}
 				</p>
 				<span className="h-px flex-1 bg-line" aria-hidden />

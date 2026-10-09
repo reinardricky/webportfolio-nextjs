@@ -25,7 +25,7 @@ export default function Contact() {
 						<div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-4">
 							<a
 								href={`mailto:${site.email}`}
-								className="group press relative font-display text-2xl font-light tracking-tight break-all text-ink hover:text-hot sm:text-3xl md:text-[2.75rem] md:leading-none"
+								className="group press relative font-display text-2xl font-light tracking-tight break-all text-ink hover:text-hot-ink sm:text-3xl md:text-[2.75rem] md:leading-none"
 							>
 								{site.email}
 								<span
@@ -47,7 +47,7 @@ export default function Contact() {
 									href={social.href}
 									target="_blank"
 									rel="noreferrer"
-									className="press tracking-wider text-ink hover:text-hot"
+									className="press tracking-wider text-ink hover:text-hot-ink"
 								>
 									{social.handle} ↗
 								</a>

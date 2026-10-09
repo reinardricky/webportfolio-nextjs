@@ -25,7 +25,7 @@ export default function ScenePicker() {
 							aria-pressed={active}
 							className={`label press border px-4 py-2.5 transition-colors ${
 								active
-									? 'border-hot bg-hot text-ink'
+									? 'border-hot bg-hot text-bg'
 									: 'border-line-lit text-dim hover:border-ink hover:text-ink'
 							}`}
 						>
@@ -47,12 +47,12 @@ export default function ScenePicker() {
 					<p className="label absolute bottom-4 left-4 leading-relaxed">
 						Fig. 1
 						<br />
-						<span className="text-hot">Scale 1:1</span>
+						<span className="text-hot-ink">Scale 1:1</span>
 					</p>
 				</div>
 
 				<div className="order-1 flex flex-col justify-center p-6 md:p-10 lg:order-2">
-					<p className="label text-hot">{SCENE_META[scene].name}</p>
+					<p className="label text-hot-ink">{SCENE_META[scene].name}</p>
 					<h2 className="mt-4 font-display text-headline font-light text-ink">
 						Pascalis Reinard
 						<br />

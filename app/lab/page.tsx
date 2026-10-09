@@ -26,7 +26,7 @@ export default function Lab() {
 		<main>
 			<nav aria-label="Layouts" className="pad flex flex-wrap gap-x-6 gap-y-2 border-b border-line py-4">
 				{OPTIONS.map((o) => (
-					<a key={o.layout} href={`#${o.layout}`} className="label press text-dim hover:text-hot">
+					<a key={o.layout} href={`#${o.layout}`} className="label press text-dim hover:text-hot-ink">
 						{o.name}
 					</a>
 				))}
@@ -35,7 +35,7 @@ export default function Lab() {
 			{OPTIONS.map(({ layout, name, note }) => (
 				<div key={layout} id={layout}>
 					<div className="pad relative z-10 flex h-14 items-center justify-between gap-6 border-y border-line bg-bg">
-						<p className="label text-hot">
+						<p className="label text-hot-ink">
 							{name} <span className="ml-2 hidden text-mute md:inline">{note}</span>
 						</p>
 						<p className="label hidden sm:block">heroLayout: &apos;{layout}&apos;</p>
@@ -48,7 +48,7 @@ export default function Lab() {
 			))}
 
 			<div className="pad py-10">
-				<Link href="/" className="label press text-mute hover:text-hot">
+				<Link href="/" className="label press text-mute hover:text-hot-ink">
 					← Back to the site
 				</Link>
 			</div>

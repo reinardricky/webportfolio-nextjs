@@ -100,14 +100,14 @@ export default function Sigil({ scrollRef, pointerRef, still }: SceneState) {
 				{bars.map((bar, i) => (
 					<group key={i} position={bar.position} quaternion={bar.quaternion}>
 						<mesh geometry={barGeo} scale={[1, bar.length, 1]}>
-							<meshStandardMaterial color="#c4543a" roughness={0.55} metalness={0.25} />
+							<meshStandardMaterial color="#00ffff" roughness={0.55} metalness={0.25} />
 						</mesh>
 						{/* Rounded ends, so joins read as one continuous cut. */}
 						<mesh geometry={capGeo} position={[0, bar.length / 2, 0]}>
-							<meshStandardMaterial color="#c4543a" roughness={0.55} metalness={0.25} />
+							<meshStandardMaterial color="#00ffff" roughness={0.55} metalness={0.25} />
 						</mesh>
 						<mesh geometry={capGeo} position={[0, -bar.length / 2, 0]}>
-							<meshStandardMaterial color="#c4543a" roughness={0.55} metalness={0.25} />
+							<meshStandardMaterial color="#00ffff" roughness={0.55} metalness={0.25} />
 						</mesh>
 					</group>
 				))}

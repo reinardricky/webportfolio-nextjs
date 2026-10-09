@@ -60,7 +60,7 @@ export default function TitleScreen({ id }: { id?: string }) {
 										{/* Selection marker: on the first item until another is hovered or focused. */}
 										<span
 											aria-hidden
-											className={`w-4 text-base text-hot transition-[opacity,transform] duration-300 ease-cut ${
+											className={`w-4 text-base text-hot-ink transition-[opacity,transform] duration-300 ease-cut ${
 												i === 0
 													? 'opacity-100 group-hover/menu:opacity-0 group-hover:!opacity-100'
 													: '-translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100'

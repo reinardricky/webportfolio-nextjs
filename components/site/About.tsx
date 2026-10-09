@@ -34,8 +34,8 @@ export default function About() {
 			 */}
 			<div className="mt-12 grid gap-12 md:grid-cols-12 md:gap-x-10">
 				<Reveal className="md:col-span-6 md:row-start-1">
-					<div className="max-w-[62ch] space-y-6 leading-relaxed text-dim">
-						<p className="text-lg leading-relaxed text-ink/90 md:text-xl">
+					<div className="max-w-[62ch] space-y-5 text-base leading-[1.75] text-ink/80 md:text-[1.0625rem]">
+						<p>
 							I studied Electrical Engineering at Universitas Indonesia and graduated in
 							2022. During my studies, I realised that the part I enjoyed most was
 							programming, so I decided to build my career in software instead.
@@ -58,20 +58,20 @@ export default function About() {
 				</Reveal>
 
 				<Reveal className="md:col-span-5 md:col-start-8 md:row-span-2 md:row-start-1" delay={0.08}>
-					<figure className="group">
+					<figure className="group max-w-64 md:ml-auto md:max-w-sm">
 						<div className="border border-line bg-surface p-1.5 shadow-plate transition-colors duration-500 group-hover:border-line-lit">
 							<Image
 								src={Portrait}
 								alt="Portrait of Pascalis Reinard Rickyputra"
 								placeholder="blur"
-								sizes="(min-width: 768px) 40vw, 100vw"
+								sizes="(min-width: 768px) 24rem, 16rem"
 								className="h-auto w-full saturate-[0.7] contrast-[1.05] transition-[filter] duration-700 ease-cut group-hover:saturate-100"
 							/>
 						</div>
 						<figcaption className="label mt-3 leading-relaxed">
 							Fig. 2
 							<br />
-							<span className="text-hot">Pascalis Reinard Rickyputra</span>
+							<span className="text-hot-ink">Pascalis Reinard Rickyputra</span>
 						</figcaption>
 					</figure>
 				</Reveal>

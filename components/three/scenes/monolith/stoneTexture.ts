@@ -303,7 +303,7 @@ export function createAlbedo(ins?: Inscription): THREE.CanvasTexture {
 		// The cut: a dark floor with pigment worked into it.
 		ctx.strokeStyle = '#2a211b';
 		carve(ctx, ins, 34, 17);
-		ctx.strokeStyle = '#9b3f28';
+		ctx.strokeStyle = '#008b8b';
 		carve(ctx, ins, 22, 10);
 	}
 	return toTexture(canvas, true);
@@ -334,21 +334,21 @@ export function createGlow(ins: Inscription): THREE.CanvasTexture {
 	ctx.fillRect(0, 0, W, H);
 
 	ctx.save();
-	ctx.shadowColor = '#d9694d';
+	ctx.shadowColor = '#66ffff';
 	ctx.shadowBlur = 40;
-	ctx.strokeStyle = 'rgba(196,84,58,0.5)';
+	ctx.strokeStyle = 'rgba(0,255,255,0.5)';
 	ctx.lineWidth = 26;
 	drawName(ctx, ins.name);
 	ctx.shadowBlur = 18;
-	ctx.strokeStyle = 'rgba(196,84,58,0.3)';
+	ctx.strokeStyle = 'rgba(0,255,255,0.3)';
 	ctx.lineWidth = 12;
 	drawBand(ctx, ins.band);
 	ctx.restore();
 
-	ctx.strokeStyle = '#e07a5c';
+	ctx.strokeStyle = '#4dffff';
 	ctx.lineWidth = 11;
 	drawName(ctx, ins.name);
-	ctx.strokeStyle = 'rgba(224,122,92,0.6)';
+	ctx.strokeStyle = 'rgba(77,255,255,0.6)';
 	ctx.lineWidth = 5;
 	drawBand(ctx, ins.band);
 	return toTexture(canvas, true);

@@ -55,7 +55,7 @@ export default function Plate({ id }: { id?: string }) {
 						<div className="relative h-[46svh] min-h-72 border border-line-lit/70 bg-bg-deep/50 lg:h-full lg:min-h-0">
 							<div className="label absolute inset-x-0 top-0 z-20 flex justify-between border-b border-line px-4 py-3">
 								<span>
-									Plate I — <span className="text-hot">{site.specimen}</span>
+									Plate I — <span className="text-hot-ink">{site.specimen}</span>
 								</span>
 								<span className="hidden sm:inline">Granite · red ochre</span>
 							</div>

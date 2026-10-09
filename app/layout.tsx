@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
-import { Geist, JetBrains_Mono, Noto_Sans_Runic, Spectral } from 'next/font/google';
+import { JetBrains_Mono, Noto_Sans_Runic, Spectral } from 'next/font/google';
+import localFont from 'next/font/local';
 
 import { site } from '@/lib/site';
 import './globals.css';
@@ -17,10 +18,12 @@ const display = Spectral({
 });
 
 /* The functional UI: a grotesque with more character than Inter, and a
-   500/600 pair for hierarchy below the display serif. */
-const sans = Geist({
-	subsets: ['latin'],
-	weight: ['400', '500', '600'],
+   500/600 pair for hierarchy below the display serif. Served from the
+   geist package: Google sometimes hands back /l/font?kit= URLs for Geist,
+   which Turbopack's next/font/google loader cannot resolve. */
+const sans = localFont({
+	src: '../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2',
+	weight: '400 600',
 	variable: '--font-sans-src',
 	display: 'swap',
 });

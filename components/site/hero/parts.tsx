@@ -11,7 +11,7 @@ export const INTRO = 'I build responsive websites and mobile apps with React, Ne
 
 export function Eyebrow({ className = '' }: { className?: string }) {
 	return (
-		<p className={`label rise text-hot ${className}`} style={delay(0)}>
+		<p className={`label rise text-hot-ink ${className}`} style={delay(0)}>
 			{site.role} — {site.location || 'Indonesia'}
 			{site.availability ? <span className="ml-3 text-cool">· {site.availability}</span> : null}
 		</p>
@@ -61,7 +61,7 @@ export function Actions({ className = '', ms = 520 }: { className?: string; ms?:
 					href={site.resumeUrl}
 					target="_blank"
 					rel="noreferrer"
-					className="label press px-2 py-2.5 text-dim underline decoration-line-lit underline-offset-4 hover:text-hot"
+					className="label press px-2 py-2.5 text-dim underline decoration-line-lit underline-offset-4 hover:text-hot-ink"
 				>
 					Résumé ↗
 				</a>

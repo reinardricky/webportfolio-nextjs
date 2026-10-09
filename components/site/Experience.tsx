@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import Reveal from '@/components/motion/Reveal';
 import SectionHeading from '@/components/site/SectionHeading';
 import { credentials, education, roles } from '@/lib/experience';
@@ -20,7 +22,18 @@ export default function Experience() {
 								/>
 
 								<div className="md:col-span-4">
-									<p className="label flex items-center gap-2.5 text-hot tabular-nums">
+									{/* One plate size for every company, square marks and wordmarks
+									    alike; light ground so each brand colour holds on the moss. */}
+									<div className="mb-5 flex h-12 w-28 items-center justify-center border border-line-lit bg-ink px-3 py-2">
+										<Image
+											src={role.logo}
+											alt={`${role.company} logo`}
+											width={88}
+											height={32}
+											className="size-full object-contain"
+										/>
+									</div>
+									<p className="label flex items-center gap-2.5 text-hot-ink tabular-nums">
 										{role.current ? (
 											<span
 												className="inline-block size-1.5 bg-hot"
@@ -41,7 +54,7 @@ export default function Experience() {
 									<h3 className="font-display text-xl font-normal tracking-tight text-ink md:text-[1.75rem] md:leading-tight">
 										{role.title}
 									</h3>
-									<p className="mt-2 text-base font-medium text-hot">{role.company}</p>
+									<p className="mt-2 text-base font-medium text-hot-ink">{role.company}</p>
 
 									<ul className="mt-5 max-w-[68ch] space-y-2.5">
 										{role.points.map((point) => (
@@ -66,7 +79,7 @@ export default function Experience() {
 
 			{/* Schooling and the small facts, kept to a single closing band. */}
 			<Reveal className="mt-16">
-				<h3 className="label text-hot">Education</h3>
+				<h3 className="label text-hot-ink">Education</h3>
 
 				<dl className="mt-6 border-t border-line">
 					{education.map((study) => (
@@ -75,7 +88,7 @@ export default function Experience() {
 								<dt className="font-display text-lg font-normal text-ink">
 									{study.school}
 								</dt>
-								<dd className="label text-hot tabular-nums">{study.period}</dd>
+								<dd className="label text-hot-ink tabular-nums">{study.period}</dd>
 							</div>
 							<dd className="mt-2 text-sm text-dim">{study.qualification}</dd>
 							{study.detail ? (

@@ -70,7 +70,7 @@ export default function Terrain({ scrollRef, pointerRef, still, segments }: Scen
 			uFade: { value: 1 },
 			uGround: { value: new THREE.Color('#1c231b') },
 			uContour: { value: new THREE.Color('#9aa87e') },
-			uIndex: { value: new THREE.Color('#c4543a') },
+			uIndex: { value: new THREE.Color('#00ffff') },
 		}),
 		[still],
 	);

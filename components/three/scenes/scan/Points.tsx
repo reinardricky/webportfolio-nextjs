@@ -136,7 +136,7 @@ export default function ScanPoints({ scrollRef, pointerRef, still, count }: Scen
 			uScanY: { value: still ? 0.35 : -H / 2 },
 			uFade: { value: 1 },
 			uStone: { value: new THREE.Color('#cdcbba') },
-			uOchre: { value: new THREE.Color('#c4543a') },
+			uOchre: { value: new THREE.Color('#00ffff') },
 			uFlash: { value: new THREE.Color('#fff4e2') },
 		}),
 		[still],

@@ -10,7 +10,7 @@ export default function Skills() {
 
 			{/* Core stack — four carved plates, hairlines drawn by the gap. */}
 			<div className="mt-12">
-				<p className="label text-hot">Core stack</p>
+				<p className="label text-hot-ink">Core stack</p>
 
 				<ul className="mt-5 grid gap-px border border-line bg-line sm:grid-cols-2">
 					{coreSkills.map((skill, i) => (
@@ -56,7 +56,7 @@ export default function Skills() {
 			{/* Secondary tiers sit as quieter record bands under the plates. */}
 			<div className="mt-16 grid gap-x-10 gap-y-14 md:grid-cols-12">
 				<Reveal className="md:col-span-7">
-					<h3 className="label text-hot">Also shipped with</h3>
+					<h3 className="label text-hot-ink">Also shipped with</h3>
 
 					<dl className="mt-5 border-t border-line">
 						{supportingSkills.map((skill) => (
@@ -64,7 +64,7 @@ export default function Skills() {
 								key={skill.name}
 								className="group flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-line py-4"
 							>
-								<dt className="font-display text-lg text-ink transition-colors duration-300 group-hover:text-hot-bright">
+								<dt className="font-display text-lg text-ink transition-colors duration-300 group-hover:text-hot-ink">
 									{skill.name}
 								</dt>
 								<dd className="text-sm text-mute">{skill.note}</dd>
@@ -74,7 +74,7 @@ export default function Skills() {
 				</Reveal>
 
 				<Reveal className="md:col-span-4 md:col-start-9" delay={0.08}>
-					<h3 className="label text-hot">What I focus on</h3>
+					<h3 className="label text-hot-ink">What I focus on</h3>
 
 					<ul className="mt-5 flex flex-wrap gap-2">
 						{practices.map((practice) => (

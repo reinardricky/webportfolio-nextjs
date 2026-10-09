@@ -16,8 +16,11 @@
 	--color-dim: #b3b3a0;
 	--color-mute: #86897a;
 
-	--color-hot: #c4543a;
-	--color-hot-bright: #d9694d;
+	--color-hot: #00ffff;
+	--color-hot-bright: #66ffff;
+	/* Text in the accent: the cyan pigment softened so it reads as type, not neon.
+	   Pure --color-hot stays for fills, rules and glows. */
+	--color-hot-ink: #8fd3cf;
 	--color-cool: #9aa87e;
 
 	--font-display: var(--font-display-src), 'Iowan Old Style', Georgia, serif;
@@ -99,7 +102,7 @@
 
 	::selection {
 		background-color: var(--color-hot);
-		color: var(--color-ink);
+		color: var(--color-bg);
 	}
 
 	:focus-visible {
@@ -197,12 +200,13 @@
 	.btn-primary {
 		border-color: var(--color-hot);
 		background-color: var(--color-hot);
-		color: var(--color-ink);
+		color: var(--color-bg);
 	}
 
 	.btn-primary:hover {
 		border-color: var(--color-hot-bright);
 		background-color: var(--color-hot-bright);
+		color: var(--color-bg);
 	}
 
 	.btn .arrow {
@@ -227,7 +231,7 @@
 	.runic {
 		font-family: var(--font-runic);
 		letter-spacing: 0.3em;
-		color: var(--color-hot);
+		color: var(--color-hot-ink);
 	}
 
 	/* Field-notes row: term left, value right, hairline under. */

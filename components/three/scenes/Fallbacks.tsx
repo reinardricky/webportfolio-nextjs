@@ -21,7 +21,7 @@ export function ScanFallback() {
 				))}
 			</g>
 			<rect x="30" y="126" width="140" height="16" fill="#fff4e2" opacity="0.1" />
-			<g fill="#c4543a">
+			<g fill="#00ffff">
 				{dots
 					.filter((_, i) => i % 3 === 0)
 					.map(([cx, cy], i) => (
@@ -52,12 +52,12 @@ export function ConstellationFallback() {
 					<circle key={i} cx={cx} cy={cy} r={r} opacity={0.45} />
 				))}
 			</g>
-			<g stroke="#c4543a" strokeWidth="0.7" fill="none" opacity="0.5">
+			<g stroke="#00ffff" strokeWidth="0.7" fill="none" opacity="0.5">
 				<path d="M58 62 78 54l16 20 24-6" />
 				<path d="M120 112l18 14-6 22-26 4" />
 				<path d="M48 128l14 18 26-6" />
 			</g>
-			<g fill="#e08a6a">
+			<g fill="#80ffff">
 				{[[58, 62], [78, 54], [94, 74], [118, 68], [120, 112], [138, 126], [132, 148], [106, 152], [48, 128], [62, 146], [88, 140]].map(
 					([cx, cy], i) => (
 						<circle key={i} cx={cx} cy={cy} r="1.8" />
@@ -79,7 +79,7 @@ export function SurveyFallback() {
 						cy="106"
 						rx={r + 26}
 						ry={r * 0.44}
-						stroke={i % 2 === 0 ? '#c4543a' : '#9aa87e'}
+						stroke={i % 2 === 0 ? '#00ffff' : '#9aa87e'}
 						strokeWidth={i % 2 === 0 ? 1 : 0.6}
 						opacity={0.55 - i * 0.06}
 						transform="rotate(-8 100 106)"
@@ -128,7 +128,7 @@ export function SigilFallback() {
 
 	return (
 		<svg viewBox="0 0 200 260" className="h-full w-full" aria-hidden focusable="false">
-			<g stroke="#c4543a" strokeWidth="7" strokeLinecap="round" fill="none">
+			<g stroke="#00ffff" strokeWidth="7" strokeLinecap="round" fill="none">
 				{strokes.map(([x1, y1, x2, y2], i) => (
 					<line
 						key={i}
@@ -157,11 +157,11 @@ export function MonolithFallback() {
 			<path
 				d="M44 270 Q50 236 56 196 L64 110 Q70 72 92 50 L104 40 Q118 30 130 34 Q146 40 150 70 L154 150 Q156 214 160 248 Q164 262 158 270 Z"
 				fill="#3b3f37"
-				stroke="#c4543a"
+				stroke="#00ffff"
 				strokeOpacity="0.35"
 				strokeWidth="0.8"
 			/>
-			<g stroke="#d9694d" strokeWidth="2.2" strokeLinecap="round" fill="none">
+			<g stroke="#66ffff" strokeWidth="2.2" strokeLinecap="round" fill="none">
 				{/* Serpent band hugging the outline: drawn wide, then cut through the middle. */}
 				<path
 					d="M66 246 L74 118 Q80 84 98 64 L108 56 Q120 48 130 52 Q140 58 142 82 L146 152 Q148 210 150 246"

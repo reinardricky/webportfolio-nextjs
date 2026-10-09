@@ -109,7 +109,7 @@ export default function Nav() {
 		<>
 			<a
 				href="#main"
-				className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-(--z-skip) focus:bg-hot focus:px-4 focus:py-2 focus:text-ink"
+				className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-(--z-skip) focus:bg-hot focus:px-4 focus:py-2 focus:text-bg"
 			>
 				Skip to content
 			</a>
@@ -123,8 +123,8 @@ export default function Nav() {
 				}`}
 			>
 				<nav className="pad flex h-(--header-h) items-center gap-x-8" aria-label="Primary">
-					<a href="#top" className="label press text-ink hover:text-hot">
-						Specimen <span className="text-hot">{site.specimen}</span>
+					<a href="#top" className="label press text-ink hover:text-hot-ink">
+						Specimen <span className="text-hot-ink">{site.specimen}</span>
 					</a>
 
 					<ul className="ml-auto hidden items-center gap-1 md:flex">
@@ -139,7 +139,7 @@ export default function Nav() {
 									>
 										<span
 											className={`label transition-colors ${
-												current ? 'text-hot' : 'text-line-lit group-hover:text-hot'
+												current ? 'text-hot-ink' : 'text-line-lit group-hover:text-hot-ink'
 											}`}
 										>
 											§{item.index}
@@ -195,7 +195,7 @@ export default function Nav() {
 			>
 				<div className="pad flex h-(--header-h) items-center justify-between border-b border-line">
 					<span className="label text-ink">
-						Specimen <span className="text-hot">{site.specimen}</span>
+						Specimen <span className="text-hot-ink">{site.specimen}</span>
 					</span>
 					<button
 						ref={closeBtn}
@@ -220,9 +220,9 @@ export default function Nav() {
 								href={item.href}
 								onClick={(e) => goTo(e, item.href)}
 								aria-current={active === item.href.slice(1) ? 'location' : undefined}
-								className="press flex items-baseline gap-4 py-5 aria-[current]:text-hot"
+								className="press flex items-baseline gap-4 py-5 aria-[current]:text-hot-ink"
 							>
-								<span className="label text-hot tabular-nums">§{item.index}</span>
+								<span className="label text-hot-ink tabular-nums">§{item.index}</span>
 								<span className="font-display text-3xl font-light tracking-tight">
 									{item.label}
 								</span>
@@ -238,7 +238,7 @@ export default function Nav() {
 							href={s.href}
 							target="_blank"
 							rel="noreferrer"
-							className="label press text-dim hover:text-hot"
+							className="label press text-dim hover:text-hot-ink"
 						>
 							{s.label} ↗
 						</a>

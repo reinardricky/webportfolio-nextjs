@@ -23,7 +23,7 @@ export default function Footer() {
 								href={tool.href}
 								target="_blank"
 								rel="noreferrer"
-								className="press text-dim hover:text-hot"
+								className="press text-dim hover:text-hot-ink"
 							>
 								{tool.label}
 							</a>
@@ -32,7 +32,7 @@ export default function Footer() {
 					))}
 				</p>
 
-				<a href="#top" className="label press text-dim hover:text-hot">
+				<a href="#top" className="label press text-dim hover:text-hot-ink">
 					Back to top ↑
 				</a>
 			</div>

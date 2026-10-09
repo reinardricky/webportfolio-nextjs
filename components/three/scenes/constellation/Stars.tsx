@@ -146,7 +146,7 @@ export default function Stars({ scrollRef, pointerRef, still, count }: SceneStat
 			uPixelRatio: { value: 1 },
 			uFade: { value: 1 },
 			uStar: { value: new THREE.Color('#ece9dd') },
-			uNode: { value: new THREE.Color('#e08a6a') },
+			uNode: { value: new THREE.Color('#80ffff') },
 		}),
 		[still],
 	);
@@ -157,7 +157,7 @@ export default function Stars({ scrollRef, pointerRef, still, count }: SceneStat
 			uPixelRatio: { value: 1 },
 			uFade: { value: 1 },
 			uStar: { value: new THREE.Color('#ece9dd') },
-			uNode: { value: new THREE.Color('#e08a6a') },
+			uNode: { value: new THREE.Color('#80ffff') },
 		}),
 		[still],
 	);
@@ -203,7 +203,7 @@ export default function Stars({ scrollRef, pointerRef, still, count }: SceneStat
 			</points>
 
 			<lineSegments geometry={geo.figure}>
-				<lineBasicMaterial color="#c4543a" transparent opacity={0.4} depthWrite={false} toneMapped={false} />
+				<lineBasicMaterial color="#00ffff" transparent opacity={0.4} depthWrite={false} toneMapped={false} />
 			</lineSegments>
 
 			<points ref={nodes} geometry={geo.nodeGeo} frustumCulled={false}>
