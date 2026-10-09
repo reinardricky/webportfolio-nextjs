@@ -51,7 +51,7 @@ export default function Experience() {
 								</div>
 
 								<div className="md:col-span-8">
-									<h3 className="font-display text-2xl font-normal tracking-tight text-ink md:text-[1.75rem] md:leading-tight">
+									<h3 className="font-display text-2xl font-normal text-ink md:text-[1.75rem] md:leading-tight">
 										{role.title}
 									</h3>
 									<p className="mt-2 text-base font-medium text-hot-ink">{role.company}</p>

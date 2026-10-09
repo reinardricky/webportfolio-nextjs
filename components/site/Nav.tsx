@@ -223,7 +223,7 @@ export default function Nav() {
 								className="press flex items-baseline gap-4 py-5 aria-[current]:text-hot-ink"
 							>
 								<span className="label text-hot-ink tabular-nums">§{item.index}</span>
-								<span className="font-display text-3xl font-light tracking-tight">
+								<span className="font-display text-3xl font-light">
 									{item.label}
 								</span>
 							</a>

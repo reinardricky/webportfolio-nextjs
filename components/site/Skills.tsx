@@ -35,7 +35,7 @@ export default function Skills() {
 										</span>
 									</div>
 
-									<h3 className="mt-8 font-display text-3xl font-light tracking-tight text-ink md:text-[2.75rem] md:leading-none">
+									<h3 className="mt-8 font-display text-3xl font-light text-ink md:text-[2.75rem] md:leading-none">
 										{skill.name}
 									</h3>
 

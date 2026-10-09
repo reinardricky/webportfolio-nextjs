@@ -1,43 +1,43 @@
 import type { Metadata, Viewport } from 'next';
-import { JetBrains_Mono, Noto_Sans_Runic, Spectral } from 'next/font/google';
 import localFont from 'next/font/local';
 
 import { site } from '@/lib/site';
 import './globals.css';
 
-// Self-hosted by next/font: no render-blocking request, no layout shift.
+// Served from app/fonts (OFL, see OFL.txt): no request to Google at build
+// time, no render-blocking request, no layout shift.
 
-/* A working serif — this is a catalogue, not a monument. Light weights
-   keep the display type scholarly rather than shouted. */
-const display = Spectral({
-	subsets: ['latin'],
-	weight: ['300', '400', '600'],
-	style: ['normal', 'italic'],
+/* Nordic archive. A 1918 book serif with sharp wedge serifs — scholarly,
+   catalogue-like, with a real italic for the surname. */
+const display = localFont({
+	src: [
+		{ path: './fonts/Brygada1918-Variable.woff2', weight: '400 700', style: 'normal' },
+		{ path: './fonts/Brygada1918-Italic-Variable.woff2', weight: '400 700', style: 'italic' },
+	],
 	variable: '--font-display-src',
 	display: 'swap',
 });
 
-/* The functional UI: a grotesque with more character than Inter, and a
-   500/600 pair for hierarchy below the display serif. Served from the
-   geist package: Google sometimes hands back /l/font?kit= URLs for Geist,
-   which Turbopack's next/font/google loader cannot resolve. */
+/* The grotesk Schibsted drew for its Norwegian newspapers: plain enough for
+   reading, with enough edge to sit under the serif. */
 const sans = localFont({
-	src: '../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2',
-	weight: '400 600',
+	src: './fonts/SchibstedGrotesk-Variable.woff2',
+	weight: '400 900',
 	variable: '--font-sans-src',
 	display: 'swap',
 });
 
-const mono = JetBrains_Mono({
-	subsets: ['latin'],
-	weight: ['400', '500'],
+/* Labels, dates and the nav. One weight — the catalogue marks stay quiet. */
+const mono = localFont({
+	src: './fonts/FragmentMono-Regular.woff2',
+	weight: '400',
 	variable: '--font-mono-src',
 	display: 'swap',
 });
 
 /* Real Elder Futhark, for the runic transliterations in the chrome. */
-const runic = Noto_Sans_Runic({
-	subsets: ['runic'],
+const runic = localFont({
+	src: './fonts/NotoSansRunic-Regular.woff2',
 	weight: '400',
 	variable: '--font-runic-src',
 	display: 'swap',

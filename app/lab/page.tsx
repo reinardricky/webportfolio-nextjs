@@ -30,6 +30,9 @@ export default function Lab() {
 						{o.name}
 					</a>
 				))}
+				<Link href="/lab/type" className="label press ml-auto text-hot-ink hover:text-ink">
+					Type pairings →
+				</Link>
 			</nav>
 
 			{OPTIONS.map(({ layout, name, note }) => (

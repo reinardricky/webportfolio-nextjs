@@ -28,7 +28,7 @@ export default function Monument({ id }: { id?: string }) {
 								{/* Behind the stone. */}
 								<Line
 									ms={160}
-									className="relative z-0 -my-[0.04em] text-[18vw] leading-[0.92] tracking-[-0.03em] uppercase lg:text-[17.2cqw]"
+									className="relative z-0 -mb-[0.04em] text-[18vw] leading-[0.92] tracking-[-0.01em] uppercase lg:text-[17.2cqw]"
 								>
 									{site.firstName}
 								</Line>

@@ -35,7 +35,7 @@ export default function TitleScreen({ id }: { id?: string }) {
 				<div className="@container flex w-full flex-col justify-end pt-(--header-h) pb-12 lg:pb-16">
 					<Eyebrow />
 
-					<h1 className="mt-5 font-display text-[12.4vw] leading-[0.92] font-light tracking-[-0.03em] text-ink lg:text-[7.4cqw]">
+					<h1 className="mt-5 font-display text-[12.4vw] leading-[0.92] font-light tracking-[-0.01em] text-ink lg:text-[7.4cqw]">
 						<Line ms={120} className="pb-[0.04em]">
 							Pascalis Reinard
 						</Line>

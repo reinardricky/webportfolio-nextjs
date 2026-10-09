@@ -17,7 +17,7 @@ export default function Straddle({ id }: { id?: string }) {
 					<div className="relative flex flex-col pt-12 lg:flex-1 lg:justify-center lg:pt-10 lg:pb-20">
 						<Eyebrow className="relative z-20" />
 
-						<h1 className="mt-6 font-display text-[12.4vw] leading-[0.9] font-light tracking-[-0.035em] text-ink lg:mt-8 lg:text-[10.4cqw]">
+						<h1 className="mt-6 font-display text-[12.4vw] leading-[0.9] font-light tracking-[-0.015em] text-ink lg:mt-8 lg:text-[10.4cqw]">
 							{/* Behind the stone. */}
 							<Line ms={120} className="relative z-0 pb-[0.06em]">
 								Pascalis Reinard

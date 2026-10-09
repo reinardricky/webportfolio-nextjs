@@ -18,7 +18,9 @@ export function Eyebrow({ className = '' }: { className?: string }) {
 	);
 }
 
-/** One display line that slides up out of its own mask. */
+/** One display line that slides up out of its own mask. The mask gets
+    headroom (padding cancelled by an equal negative margin) so tall
+    ascenders are not shaved off at the display's tight leading. */
 export function Line({
 	children,
 	ms,
@@ -31,7 +33,7 @@ export function Line({
 	inner?: string;
 }) {
 	return (
-		<span className={`block overflow-hidden ${className}`}>
+		<span className={`-mt-[0.16em] block overflow-hidden pt-[0.16em] ${className}`}>
 			<span className={`line-up block ${inner}`} style={delay(ms)}>
 				{children}
 			</span>
